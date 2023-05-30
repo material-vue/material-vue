@@ -10,23 +10,52 @@
 
 
 //color design system
-$primary-key-color: rgb(116, 176, 75);
-$black_v: red(grayscale($primary-key-color));
+$primary-key-color: rgb(180, 47, 206);
+$secondary-key-color: rgb(0, 51, 255);
+//$ter TODO
+
+
+//auto-generated triad color complementary combination
+$secondary-key-color: adjust-color($primary-key-color, $hue: 180deg);
+$secondary-key-color: rgba(change-color(adjust-color(mix($primary-key-color, $secondary-key-color, 30%), $lightness: 20%), $saturation: 30%), 100%);
+$primary-gray: red(grayscale($primary-key-color));
+$secondary-gray: red(grayscale($secondary-key-color));
 
 :root {
+  //primary
   //--primary-color: #{change-color($primary-key-color, $lightness: (lightness($primary-key-color))*0.4%)};
-  --primary-color: #{rgb(red($primary-key-color)/$black_v*0.3*256, green($primary-key-color)/$black_v*0.3*256, blue($primary-key-color)/$black_v*0.3*256)};
+  $primary-color: rgb(red($primary-key-color)/$primary-gray*0.3*256, green($primary-key-color)/$primary-gray*0.3*256, blue($primary-key-color)/$primary-gray*0.3*256);
+  --primary-color: #{$primary-color};
+  --primary-color-a8: #{rgba($primary-color, 8%)};
   //--on-primary-color: #{rgb(red($primary-key-color)/$black_v*256, green($primary-key-color)/$black_v*256, blue($primary-key-color)/$black_v*256)};
   //--primary-container-color: #{rgb(red($primary-key-color)/$black_v*0.9*256, green($primary-key-color)/$black_v*0.9*256, blue($primary-key-color)/$black_v*0.9*256)};
   //--on-primary-container-color: #{rgb(red($primary-key-color)/$black_v*0.1*256, green($primary-key-color)/$black_v*0.1*256, blue($primary-key-color)/$black_v*0.1*256)};
   --on-primary-color: #{change-color($primary-key-color, $lightness: 100%)};
-  --primary-container-color: #{change-color($primary-key-color, $lightness: 85%)};
-  --on-primary-container-color: #{change-color($primary-key-color, $lightness: 10%)};
-  //disabled
-  --primary-container-color-a18: #{rgba($primary-key-color, 12%)};
+  --primary-container-color: #{change-color(change-color($primary-key-color, $lightness: 85%), $saturation: 100%)};
+  --on-primary-container-color: #{change-color($primary-key-color, $lightness: 8%)};
 
-  //elevation
-  --elevation-light-1: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  //secondary
+  --secondary-color: #{rgb(red($secondary-key-color)/$secondary-gray*0.3*256, green($secondary-key-color)/$secondary-gray*0.3*256, blue($secondary-key-color)/$secondary-gray*0.3*256)};
+  --on-secondary-color: #{change-color($secondary-key-color, $lightness: 95%)};
+  --secondary-container-color: #{change-color($secondary-key-color, $lightness: 85%)};
+  --on-secondary-container-color: #{change-color($secondary-key-color, $lightness: 8%)};
+
+  //disabled
+  --primary-container-color-a18: #{change-color(rgba($primary-key-color, 12%), $saturation: 10%)};
+
+  //surface
+  --surface-dim-light: #DED8E1;
+  --surface-light: #FEF7FF;
+  --surface-bright-light: #FEF7FF;
+  //TODO surface lowes-highest
+  --surface-container-light: #F3EDF7;
+  --on-surface-light: #1D1B20;
+  --on-surface-var-light: #49454F;
+  --outline-light: #79747E;
+  --outline-var-light: #CAC4D0;
+
+  //elevation (box-shadow param)
+  --elevation-1-light: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
 }
 
 
@@ -132,7 +161,7 @@ span.ripple {
   position: absolute;
   border-radius: 50%;
   transform: scale(0);
-  animation: ripple 600ms linear;
+  animation: ripple 400ms linear;
   background-color: rgba(255, 255, 255, 0.7);
 }
 

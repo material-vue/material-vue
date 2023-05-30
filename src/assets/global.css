@@ -7,12 +7,25 @@
 }
 
 :root {
-  --primary-color: rgb(71, 107, 46);
+  --primary-color: rgb(109, 28, 125);
+  --primary-color-a8: rgba(109, 28, 125, 0.08);
   --on-primary-color: white;
-  --primary-container-color: #d6e8c9;
-  --on-primary-container-color: #18240f;
-  --primary-container-color-a18: rgba(116, 176, 75, 0.12);
-  --elevation-light-1: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --primary-container-color: #f2b3ff;
+  --on-primary-container-color: #1d0821;
+  --secondary-color: rgb(70, 87, 66);
+  --on-secondary-color: #f0f6ee;
+  --secondary-container-color: #d1e4cd;
+  --on-secondary-container-color: #101b0e;
+  --primary-container-color-a18: rgba(135, 114, 139, 0.12);
+  --surface-dim-light: #DED8E1;
+  --surface-light: #FEF7FF;
+  --surface-bright-light: #FEF7FF;
+  --surface-container-light: #F3EDF7;
+  --on-surface-light: #1D1B20;
+  --on-surface-var-light: #49454F;
+  --outline-light: #79747E;
+  --outline-var-light: #CAC4D0;
+  --elevation-1-light: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
 }
 
 .m-text {
@@ -117,7 +130,7 @@ span.ripple {
   position: absolute;
   border-radius: 50%;
   transform: scale(0);
-  animation: ripple 600ms linear;
+  animation: ripple 400ms linear;
   background-color: rgba(255, 255, 255, 0.7);
 }
 
