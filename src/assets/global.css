@@ -1,16 +1,131 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
 }
 
 :root {
-  --primary-color: rgb(84, 194, 10);
-  --on-primary-container-color: rgb(21, 49, 3);
+  --primary-color: rgb(71, 107, 46);
   --on-primary-color: white;
-  --primary-container-color: #d2fbb6;
+  --primary-container-color: #d6e8c9;
+  --on-primary-container-color: #18240f;
+  --primary-container-color-a18: rgba(116, 176, 75, 0.12);
+  --elevation-light-1: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+.m-text {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+}
+
+.m-display-large {
+  font-size: 57px;
+  line-height: 64px;
+  letter-spacing: -0.25px;
+}
+
+.m-display-medium {
+  font-size: 45px;
+  line-height: 52px;
+}
+
+.m-display-small {
+  font-size: 36px;
+  line-height: 44px;
+}
+
+.m-headline-large {
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.m-headline-medium {
+  font-size: 28px;
+  line-height: 36px;
+}
+
+.m-headline-small {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.m-title-large {
+  font-size: 22px;
+  line-height: 28px;
+}
+
+.m-title-medium {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+  letter-spacing: 0.15px;
+}
+
+.m-title-small {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  /* identical to box height, or 143% */
+  letter-spacing: 0.1px;
+}
+
+.m-label-large {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+}
+
+.m-label-medium {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.5px;
+}
+
+.m-label-small {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 16px;
+  /* identical to box height, or 145% */
+  letter-spacing: 0.5px;
+}
+
+.m-body-large {
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+  letter-spacing: 0.5px;
+}
+
+.m-body-medium {
+  font-size: 14px;
+  line-height: 20px;
+  /* identical to box height, or 143% */
+  letter-spacing: 0.25px;
+}
+
+.m-body-small {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+span.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 600ms linear;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
 }
 
 /*# sourceMappingURL=global.css.map */

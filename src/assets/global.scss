@@ -1,24 +1,144 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  //font-family: 'Roboto', sans-serif;
 }
 
 
 //color design system
-$primary-key-color: rgb(65, 150, 8);
+$primary-key-color: rgb(116, 176, 75);
 $black_v: red(grayscale($primary-key-color));
 
 :root {
   //--primary-color: #{change-color($primary-key-color, $lightness: (lightness($primary-key-color))*0.4%)};
-  --primary-color: #{rgb(red($primary-key-color)/$black_v*0.4*256, green($primary-key-color)/$black_v*0.4*256, blue($primary-key-color)/$black_v*0.4*256)};
+  --primary-color: #{rgb(red($primary-key-color)/$black_v*0.3*256, green($primary-key-color)/$black_v*0.3*256, blue($primary-key-color)/$black_v*0.3*256)};
   //--on-primary-color: #{rgb(red($primary-key-color)/$black_v*256, green($primary-key-color)/$black_v*256, blue($primary-key-color)/$black_v*256)};
   //--primary-container-color: #{rgb(red($primary-key-color)/$black_v*0.9*256, green($primary-key-color)/$black_v*0.9*256, blue($primary-key-color)/$black_v*0.9*256)};
-  --on-primary-container-color: #{rgb(red($primary-key-color)/$black_v*0.1*256, green($primary-key-color)/$black_v*0.1*256, blue($primary-key-color)/$black_v*0.1*256)};
+  //--on-primary-container-color: #{rgb(red($primary-key-color)/$black_v*0.1*256, green($primary-key-color)/$black_v*0.1*256, blue($primary-key-color)/$black_v*0.1*256)};
   --on-primary-color: #{change-color($primary-key-color, $lightness: 100%)};
   --primary-container-color: #{change-color($primary-key-color, $lightness: 85%)};
-  //--on-primary-container-color: #{change-color($primary-key-color, $lightness: 10%)};
+  --on-primary-container-color: #{change-color($primary-key-color, $lightness: 10%)};
+  //disabled
+  --primary-container-color-a18: #{rgba($primary-key-color, 12%)};
+
+  //elevation
+  --elevation-light-1: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+
+//typography
+.m-text {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+}
+
+.m-display-large {
+  font-size: 57px;
+  line-height: 64px;
+  letter-spacing: -0.25px;
+}
+.m-display-medium {
+  font-size: 45px;
+  line-height: 52px;
+}
+.m-display-small {
+  font-size: 36px;
+  line-height: 44px;
+}
+
+.m-headline-large {
+  font-size: 32px;
+  line-height: 40px;
+}
+.m-headline-medium {
+  font-size: 28px;
+  line-height: 36px;
+}
+.m-headline-small {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.m-title-large {
+  font-size: 22px;
+  line-height: 28px;
+}
+.m-title-medium {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+
+  /* identical to box height, or 150% */
+  letter-spacing: 0.15px;
+}
+.m-title-small {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+
+  /* identical to box height, or 143% */
+  letter-spacing: 0.1px;
+}
+
+.m-label-large {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+
+  letter-spacing: 0.1px;
+}
+.m-label-medium {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+
+  letter-spacing: 0.5px;
+}
+.m-label-small {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 16px;
+
+  /* identical to box height, or 145% */
+  letter-spacing: 0.5px;
+}
+
+.m-body-large {
+  font-size: 16px;
+  line-height: 24px;
+
+  /* identical to box height, or 150% */
+  letter-spacing: 0.5px;
+}
+.m-body-medium {
+  font-size: 14px;
+  line-height: 20px;
+
+  /* identical to box height, or 143% */
+  letter-spacing: 0.25px;
+}
+.m-body-small {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+//states
+
+span.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 600ms linear;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
 }
