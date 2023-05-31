@@ -10,7 +10,7 @@
 
 
 //color design system
-$primary-key-color: rgb(180, 47, 206);
+$primary-key-color: rgb(0, 197, 181);
 $secondary-key-color: rgb(0, 51, 255);
 //$ter TODO
 
@@ -56,6 +56,8 @@ $secondary-gray: red(grayscale($secondary-key-color));
 
   //elevation (box-shadow param)
   --elevation-1-light: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --elevation-2-light: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  --elevation-3-light: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 

@@ -7,16 +7,16 @@
 }
 
 :root {
-  --primary-color: rgb(109, 28, 125);
-  --primary-color-a8: rgba(109, 28, 125, 0.08);
+  --primary-color: rgb(0, 153, 140);
+  --primary-color-a8: rgba(0, 153, 140, 0.08);
   --on-primary-color: white;
-  --primary-container-color: #f2b3ff;
-  --on-primary-container-color: #1d0821;
-  --secondary-color: rgb(70, 87, 66);
-  --on-secondary-color: #f0f6ee;
-  --secondary-container-color: #d1e4cd;
-  --on-secondary-container-color: #101b0e;
-  --primary-container-color-a18: rgba(135, 114, 139, 0.12);
+  --primary-container-color: #b3fff9;
+  --on-primary-container-color: #002925;
+  --secondary-color: rgb(93, 60, 63);
+  --on-secondary-color: #f6eeef;
+  --secondary-container-color: #e4cdcf;
+  --on-secondary-container-color: #1b0e0f;
+  --primary-container-color-a18: rgba(89, 108, 107, 0.12);
   --surface-dim-light: #DED8E1;
   --surface-light: #FEF7FF;
   --surface-bright-light: #FEF7FF;
@@ -26,6 +26,8 @@
   --outline-light: #79747E;
   --outline-var-light: #CAC4D0;
   --elevation-1-light: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --elevation-2-light: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  --elevation-3-light: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .m-text {

@@ -1,5 +1,5 @@
 <template>
-  <m-top-bar/>
+  <m-top-bar behavior="background"><span class="material-symbols-outlined">menu</span>Material 3 design system<span class="material-symbols-outlined">account_circle</span></m-top-bar>
   <div class="colors">
     <div class="primary"><p class="m-text m-display-small">Primary</p></div>
     <div class="primary_container"><p class="m-text m-display-small">Primary container</p></div>

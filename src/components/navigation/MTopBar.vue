@@ -1,11 +1,28 @@
 <template>
-  <div ref="top_bar" class="container">
-    <p class="m-text m-display-medium">Title</p>
+  <div ref="top_bar" class="container" :class="['behavior_'+behavior]">
+    <p class="container__headline m-text m-title-large"><slot></slot></p>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    configuration: {
+      type: String,
+      default: 'small-centered',
+      validator(value) {
+        return ['small-centered', 'small', 'medium', 'large'].includes(value);
+        //TODO: sm, md, lg
+      }
+    },
+    behavior: {
+      type: String,
+      default: 'background',
+      validator(value) {
+        return ['none', 'elevation', 'background'].includes(value);
+      }
+    }
+  },
   mounted() {
     let top_bar = this.$refs.top_bar;
     window.onscroll = function() {scrollFunction()};
@@ -23,16 +40,36 @@ export default {
 
 <style lang="scss" scoped>
 .container {
+  width: 100%;
+  height: 64px;
+  top: 0;
+  padding: 18px;
+
   background: var(--surface-light);
+  color: var(--on-surface-light);
 
   transition: 0.4s;
-  position: fixed; // Sticky/fixed navbar
-  width: 100%;
-  top: 0;
-  padding: 16px;
+  position: sticky;
+
+  &__headline {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    :slotted(span) {
+      &:nth-child(2) {
+        margin-left: auto;
+      }
+    }
+  }
 
   &__scrolled {
-    padding: 8px 16px;
+    &.behavior_elevation {
+      box-shadow: var(--elevation-3-light);
+    }
+    &.behavior_background {
+      background: var(--surface-container-light);
+    }
+    //padding: 8px 16px;
   }
 }
 </style>
