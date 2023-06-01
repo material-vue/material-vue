@@ -16,8 +16,9 @@
 <script>
 import MButton from "@/components/action/MButton.vue";
 import MTopBar from "@/components/navigation/MTopBar.vue";
+import MDivider from "@/components/utils/MDivider.vue";
 export default {
-  components: {MTopBar, MButton}
+  components: {MDivider, MTopBar, MButton}
 }
 </script>
 <style lang="scss">
@@ -55,5 +56,9 @@ export default {
   justify-content: center;
   width: 100%;
   margin-top: 16px;
+}
+.divider {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 </style>

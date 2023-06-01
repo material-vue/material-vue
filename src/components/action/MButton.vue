@@ -1,5 +1,5 @@
 <template>
-  <div ref="btn" class="container" :class="[{'container--enabled':enabled}, type]">
+  <div ref="btn" class="container" :class="[{'container--enabled':enabled}, type, {'container--wrap': wrap}]">
     <p class="container__label-text m-text m-headline-small"><slot></slot></p>
   </div>
 </template>
@@ -18,6 +18,10 @@ export default {
       validator(value) {
         return ['filled', 'outlined', 'filled-tonal'].includes(value);
       }
+    },
+    wrap: {
+      type: Boolean,
+      default: true
     }
   },
   setup() {
@@ -41,6 +45,7 @@ export default {
   &__label-text {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     margin-left: 8px;
     user-select: none;
@@ -49,19 +54,21 @@ export default {
       margin-left: 0;
     }
   }
+  &--wrap {
+    max-width: min-content;
+  }
 
   &:not(&--enabled) {
-    //opacity: 18%;
     cursor: default;
     background-color: var(--primary-container-color-a18);
-    color: var(--on-surface-light);
+    color: var(--on-surface);
     .container__label-text {
       opacity: 38%;
     }
   }
   &--enabled:not(.outlined) {
     &:hover:not(&:active) {
-      box-shadow: var(--elevation-1-light);
+      box-shadow: var(--elevation-1);
     }
   }
 }
@@ -76,7 +83,7 @@ export default {
 }
 .outlined {
   color: var(--primary-color);
-  border: 1px solid var(--outline-light);
+  border: 1px solid var(--outline);
   &:hover:not(&:active) {
     background-color: var(--primary-color-a8);
   }
