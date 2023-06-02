@@ -43,6 +43,7 @@ export default {
   position: relative;
   overflow: hidden;
   &__label-text {
+    white-space: nowrap;
     display: flex;
     align-items: center;
     justify-content: center;

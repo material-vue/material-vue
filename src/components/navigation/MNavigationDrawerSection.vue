@@ -1,16 +1,11 @@
 <template>
-  <div>
-    123123
+  <div class="container">
+    <slot name="title"></slot>
   </div>
 </template>
 
 <script>
 export default {
-  setup() {
-
-
-    return {}
-  }
 }
 </script>
 
