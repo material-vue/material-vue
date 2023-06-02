@@ -7,21 +7,25 @@
 }
 
 :root {
-  --primary-color: rgb(0, 153, 140);
-  --primary-color-a8: rgba(0, 153, 140, 0.08);
+  --primary-color: rgb(75, 121, 32);
+  --primary-color-a8: rgba(75, 121, 32, 0.08);
   --on-primary-color: white;
-  --primary-container-color: #b3fff9;
-  --on-primary-container-color: #002925;
-  --secondary-color: rgb(140, 60, 63);
-  --secondary-color-a8: rgba(140, 60, 63, 0.08);
-  --on-secondary-color: #f6eeef;
-  --secondary-container-color: #e4cdcf;
-  --on-secondary-container-color: #1b0e0f;
-  --primary-container-color-a18: rgba(89, 108, 107, 0.12);
-  --surface-dim: #DED8E1;
-  --surface: #FEF7FF;
+  --primary-container-color: #d7ffb3;
+  --on-primary-container-color: #142009;
+  --secondary-color: rgb(116, 61, 92);
+  --secondary-color-a8: rgba(116, 61, 92, 0.08);
+  --on-secondary-color: #f2eef6;
+  --secondary-container-color: #d9cde4;
+  --on-secondary-container-color: #150e1b;
+  --primary-container-color-a18: rgba(102, 112, 92, 0.12);
+  --surface-dim: #ced1c9;
+  --surface: #fbf5fb;
   --surface-bright: #FEF7FF;
-  --surface-container: #F3EDF7;
+  --surface-container-lowest: #FFFFFF;
+  --surface-container-low: #e8eae5;
+  --surface-container: #e2e4df;
+  --surface-container-high: #d9dcd4;
+  --surface-container-highest: #d1d6cb;
   --on-surface: #1D1B20;
   --on-surface-var: #49454F;
   --outline: #79747E;
@@ -32,20 +36,24 @@
 }
 
 [m-theme=dark] {
-  --primary-color: #b3fff9;
-  --primary-color-a8: rgba(179, 255, 249, 0.08);
-  --on-primary-color: #00665e;
-  --primary-container-color: #1f7a73;
-  --on-primary-container-color: #d1faf7;
-  --secondary-color: #e4cdcf;
-  --secondary-color-a8: rgba(228, 205, 207, 0.08);
-  --on-secondary-color: #422426;
-  --secondary-container-color: #564344;
-  --on-secondary-container-color: #f5d6d9;
+  --primary-color: #d7ffb3;
+  --primary-color-a8: rgba(215, 255, 179, 0.08);
+  --on-primary-color: #325116;
+  --primary-container-color: #4b7a1f;
+  --on-primary-container-color: #e5fad1;
+  --secondary-color: #d9cde4;
+  --secondary-color-a8: rgba(217, 205, 228, 0.08);
+  --on-secondary-color: #342442;
+  --secondary-container-color: #4d4356;
+  --on-secondary-container-color: #e6d6f5;
   --surface-dim: #141218;
   --surface: #141218;
   --surface-bright: #3B383E;
+  --surface-container-lowest: #0F0D13;
+  --surface-container-low: #1D1B20;
   --surface-container: #211F26;
+  --surface-container-high: #2B2930;
+  --surface-container-highest: #36343B;
   --on-surface: #E6E0E9;
   --on-surface-var: #CAC4D0;
   --outline: #938F99;
