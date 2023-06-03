@@ -5,13 +5,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -moz-box-sizing: border-box;
   //font-family: 'Roboto', sans-serif;
 }
 
 
 //COLOR
-$primary-key-color: rgb(187, 0, 100);
-$secondary-key-color: rgb(0, 51, 255);
+$primary-key-color: rgb(0, 121, 255);
+$secondary-key-color: rgb(255, 0, 183);
 //TODO: ter-clr
 
 
@@ -211,4 +212,13 @@ $on-secondary-container-dark: change-color(change-color($secondary-key-color, $l
 .m-body-small {
   font-size: 12px;
   line-height: 16px;
+}
+
+//SCRIM
+.m-scrim {
+  position: fixed;
+  pointer-events: none;
+  inset: 0;
+  background-color: black;
+  opacity: 0%;
 }
