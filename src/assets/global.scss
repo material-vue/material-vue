@@ -11,13 +11,13 @@
 
 
 //COLOR
-$primary-key-color: rgb(0, 121, 255);
+$primary-key-color: rgb(38, 173, 106);
 $secondary-key-color: rgb(255, 0, 183);
 //TODO: ter-clr
 
 
 //auto-generated triad color complementary combination
-$secondary-key-color: adjust-color($primary-key-color, $hue: 180deg);
+$secondary-key-color: adjust-color($primary-key-color, $hue: 20deg);
 
 $secondary-key-color: rgba(change-color(adjust-color(mix($primary-key-color, $secondary-key-color, 30%), $lightness: 20%), $saturation: 30%), 100%);
 $primary-gray: red(grayscale($primary-key-color));
@@ -35,7 +35,7 @@ $on-primary-container-dark: change-color(change-color($primary-key-color, $light
 
 $secondary-color-light: rgb(red($secondary-key-color)/$primary-gray*0.3*256, green($secondary-key-color)/$secondary-gray*0.3*256, blue($secondary-key-color)/$secondary-gray*0.3*256);
 $on-secondary-color-light: change-color($secondary-key-color, $lightness: 95%);
-$secondary-container-light: change-color(change-color($secondary-key-color, $lightness: 85%));
+$secondary-container-light: change-color(change-color($secondary-key-color, $lightness: 80%));
 $on-secondary-container-light: change-color($secondary-key-color, $lightness: 8%);
 
 $secondary-color-dark: change-color(change-color($secondary-key-color, $lightness: 85%), $saturation: 30%);
@@ -67,11 +67,12 @@ $on-secondary-container-dark: change-color(change-color($secondary-key-color, $l
   --surface: #{mix(#FEF7FF, $primary-key-color, 93%)};
   --surface-bright: #FEF7FF;
   --surface-container-lowest: #FFFFFF;
-  --surface-container-low: #{mix(#F7F2FA, $primary-key-color, 85%)};
-  --surface-container: #{mix(#F3EDF7, $primary-key-color, 83%)};
-  --surface-container-high: #{mix(#ECE6F0, $primary-key-color, 80%)};
-  --surface-container-highest: #{mix(#E6E0E9, $primary-key-color, 77%)};
+  --surface-container-low: #{mix(#F7F2FA, $primary-key-color, 95%)};
+  --surface-container: #{mix(#F3EDF7, $primary-key-color, 87%)};
+  --surface-container-high: #{mix(#ECE6F0, $primary-key-color, 82%)};
+  --surface-container-highest: #{mix(#E6E0E9, $primary-key-color, 79%)};
   --on-surface: #1D1B20;
+  --on-surface-a8: rgba(29, 27, 32, 0.05);
   --on-surface-var: #49454F;
   --outline: #79747E;
   --outline-var: #CAC4D0;
@@ -107,6 +108,7 @@ $on-secondary-container-dark: change-color(change-color($secondary-key-color, $l
   --surface-container-high: #{mix(#2B2930, $primary-key-color, 80%)};
   --surface-container-highest: #{mix(#36343B, $primary-key-color, 77%)};
   --on-surface: #E6E0E9;
+  --on-surface-a8: rgba(230, 224, 233, 0.05);
   --on-surface-var: #CAC4D0;
   --outline: #938F99;
   --outline-var: #49454F;
@@ -221,4 +223,9 @@ $on-secondary-container-dark: change-color(change-color($secondary-key-color, $l
   inset: 0;
   background-color: black;
   opacity: 0%;
+  transition: opacity .5s;
+}
+
+span {
+  cursor: default;
 }

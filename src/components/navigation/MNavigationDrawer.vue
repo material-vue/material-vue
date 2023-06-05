@@ -1,7 +1,9 @@
 <template>
   <div ref="drawer" class="container" :class="[{'container--modal': modal, 'container--rounded': rounded}, 'container--'+side]">
-    <p class="container__headline m-text m-title-small"><slot name="headline"></slot></p>
-    <slot name="sections"></slot>
+    <div class="inner-container" :style="style">
+      <p class="inner-container__headline m-text m-title-large"><slot name="headline"></slot></p>
+      <slot name="items"></slot>
+    </div>
   </div>
 </template>
 
@@ -32,11 +34,15 @@ export default {
     },
     mask: {
       type: String
+    },
+    style: {
+      type: String
     }
   },
   data() {
     return {
       opened: false,
+      items: []
     }
   },
   methods: {
@@ -80,6 +86,20 @@ export default {
     if (!this.modal) {
       this.openNav()
     }
+
+    //get all sections
+    console.log(this.$slots.items()[0])
+    const slotItems = this.$slots.items();
+    const firstSlot = slotItems[0];
+    const children = firstSlot.fn ? firstSlot.fn()[0].children : null;
+    console.log(children)
+    for (const section of this.$slots.items()) {
+      console.log(section.children.$slots)
+      for (const item of section.children) {
+        console.log(item)
+      }
+    }
+
   },
   watch: {
     modal(new_value, old_value) {
@@ -103,7 +123,7 @@ export default {
 .container {
   height: 100%;
   width: 360px;
-  background: var(--surface);
+  background: var(--surface-container-low);
   //padding: 12px; // width 0 doesnt work with this
   overflow: hidden;
 
@@ -133,11 +153,20 @@ export default {
   &--rounded.container--full {
     border-radius: 16px;
   }
+}
+.inner-container {
+  min-width: 360px;
+  padding: 12px;
 
 
   color: var(--on-surface-var);
   &__headline {
+    margin: 18px 8px 18px 16px;
+    &:empty {
+      margin: 0;
+    }
 
+    text-align: left;
   }
 }
 </style>
