@@ -1,8 +1,7 @@
 <template>
-  <div class="container" :class="['container--'+state]">
-    <p class="container__label m-text m-label-large">
-      <slot/>
-    </p>
+  <div ref="item" class="item" :class="['item--'+state]">
+    <p class="item__label m-text m-label-large" v-html="content"></p>
+    <span ref="ripple" class="ripple"></span>
   </div>
 </template>
 
@@ -16,13 +15,41 @@ export default {
       validator(value) {
         return ['inactive', 'active'].includes(value);
       }
+    },
+    content: {
+      type: String
     }
+  },
+  mounted() {
+    let refs = this.$refs;
+    function createRipple(event) {
+      const button = event.currentTarget;
+
+      const circle = refs.ripple;
+      const diameter = Math.max(button.clientWidth, button.clientHeight);
+      const radius = diameter / 2;
+
+      circle.style.width = circle.style.height = `${diameter}px`;
+      circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+      circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+
+      button.removeChild(circle);
+      button.appendChild(circle)
+    }
+
+    refs.item.addEventListener('click', createRipple)
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.container {
+.item {
+  //for ripple
+  position: relative;
+  overflow: hidden;
+
+  cursor: pointer;
+
   width: 100%;
   height: 56px;
   display: flex;
@@ -40,6 +67,12 @@ export default {
   }
   &--inactive:hover {
     background: var(--on-surface-a8);
+  }
+
+  & > p {
+    display: flex;
+    gap: 8px;
+    align-items: center;
   }
 }
 </style>

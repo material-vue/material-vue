@@ -1,6 +1,7 @@
 <template>
   <div ref="btn" class="container" :class="[{'container--enabled':enabled}, type, {'container--wrap': wrap}]">
     <p class="container__label-text m-text m-headline-small"><slot></slot></p>
+    <span ref="ripple" class="ripple"></span>
   </div>
 </template>
 
@@ -24,14 +25,32 @@ export default {
       default: true
     }
   },
-  setup() {
+  mounted() {
+    let refs = this.$refs;
+    function createRipple(event) {
+      const button = event.currentTarget;
 
-  },
+      const circle = refs.ripple;
+      const diameter = Math.max(button.clientWidth, button.clientHeight);
+      const radius = diameter / 2;
+
+      circle.style.width = circle.style.height = `${diameter}px`;
+      circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+      circle.style.top = '10px';
+
+      button.removeChild(circle);
+      button.appendChild(circle)
+    }
+
+    refs.btn.addEventListener('click', createRipple)
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .container {
+  position: relative;
+
   padding: 10px 24px 10px 16px;
   height: min-content;
   min-width: min-content;

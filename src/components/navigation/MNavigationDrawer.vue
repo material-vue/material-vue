@@ -1,16 +1,24 @@
 <template>
-  <div ref="drawer" class="container" :class="[{'container--modal': modal, 'container--rounded': rounded}, 'container--'+side]">
+  <div ref="drawer" class="container drawer" :class="[{'container--modal': modal, 'container--rounded': rounded}, 'container--'+side]">
     <div class="inner-container" :style="style">
-      <p class="inner-container__headline m-text m-title-large"><slot name="headline"></slot></p>
-      <slot name="items"></slot>
+      <p class="inner-container__headline m-text m-title-large"><slot/></p>
+      <m-navigation-drawer-section v-for="(section, index) in sections" :title="section.title">
+        <m-navigation-drawer-item v-for="(item, index2) in section.items" :key="item" :state="active_item==item ? 'active' : 'inactive'" :content="item" @click="active_item=item"/>
+      </m-navigation-drawer-section>
     </div>
   </div>
 </template>
 
 <script>
+import MNavigationDrawerItem from "@/components/navigation/MNavigationDrawerItem.vue";
+import MNavigationDrawerSection from "@/components/navigation/MNavigationDrawerSection.vue";
 export default {
+  components: {MNavigationDrawerSection, MNavigationDrawerItem},
   expose: ['openNav', 'closeNav'],
   props: {
+    sections: {
+      type: Array,
+    },
     content_area: {
       type: String,
       required: true
@@ -42,7 +50,7 @@ export default {
   data() {
     return {
       opened: false,
-      items: []
+      active_item: this.$props.sections[0].items[0]
     }
   },
   methods: {
@@ -87,25 +95,13 @@ export default {
       this.openNav()
     }
 
-    //get all sections
-    console.log(this.$slots.items()[0])
-    const slotItems = this.$slots.items();
-    const firstSlot = slotItems[0];
-    const children = firstSlot.fn ? firstSlot.fn()[0].children : null;
-    console.log(children)
-    for (const section of this.$slots.items()) {
-      console.log(section.children.$slots)
-      for (const item of section.children) {
-        console.log(item)
-      }
-    }
-
   },
   watch: {
     modal(new_value, old_value) {
       if (new_value) {
         this.closeNav()
       } else {
+        document.getElementsByClassName('m-scrim')[0].style.opacity = '0';
         this.openNav()
       }
     },
@@ -155,6 +151,7 @@ export default {
   }
 }
 .inner-container {
+  height: 100%;
   min-width: 360px;
   padding: 12px;
 
