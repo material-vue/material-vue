@@ -1,23 +1,31 @@
 <template>
-  <div ref="item" class="item" :class="['item--'+state]">
+  <div ref="item" class="item" :class="[isActive]" @click="selectItem">
     <p class="item__label m-text m-label-large" v-html="content"></p>
     <span ref="ripple" class="ripple"></span>
   </div>
 </template>
 
 <script>
+import {toRaw} from "vue";
+
 export default {
   props: {
-    state: {
-      type: String,
-      required: false,
-      default: 'inactive',
-      validator(value) {
-        return ['inactive', 'active'].includes(value);
-      }
+    value: {
+      type: String
     },
     content: {
       type: String
+    }
+  },
+  methods: {
+    selectItem() {
+      toRaw(this.$parent).selectItem({'value': this.value})
+    },
+  },
+  inject: ['selected'],
+  computed: {
+    isActive() {
+      return this.selected === this.value ? 'item--active' : 'item--inactive';
     }
   },
   mounted() {

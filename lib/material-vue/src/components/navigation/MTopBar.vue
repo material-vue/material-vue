@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  name: 'MTopBar',
   props: {
     configuration: {
       type: String,
@@ -64,7 +65,7 @@ export default {
 
   &__scrolled {
     &.behavior_elevation {
-      box-shadow: var(--elevation-3);
+      box-shadow: var(--elevation-2);
     }
     &.behavior_background {
       background: var(--surface-container-low);

@@ -1,10 +1,11 @@
 <template>
   <div ref="drawer" class="container drawer" :class="[{'container--modal': modal, 'container--rounded': rounded}, 'container--'+side]">
     <div class="inner-container" :style="style">
-      <p class="inner-container__headline m-text m-title-large"><slot/></p>
-      <m-navigation-drawer-section v-for="(section, index) in sections" :title="section.title">
-        <m-navigation-drawer-item v-for="(item, index2) in section.items" :key="item" :state="active_item==item ? 'active' : 'inactive'" :content="item" @click="active_item=item"/>
-      </m-navigation-drawer-section>
+<!--      <p class="inner-container__headline m-text m-title-large"></p>-->
+      <div class="inner-container__headline">
+        <slot name="prepend"/>
+      </div>
+      <slot/>
     </div>
   </div>
 </template>
@@ -12,9 +13,11 @@
 <script>
 import MNavigationDrawerItem from "@/components/navigation/MNavigationDrawerItem.vue";
 import MNavigationDrawerSection from "@/components/navigation/MNavigationDrawerSection.vue";
+import {computed} from "vue";
 export default {
+  name: 'MNavigationDrawer',
   components: {MNavigationDrawerSection, MNavigationDrawerItem},
-  expose: ['openNav', 'closeNav'],
+  expose: ['openNav', 'closeNav', 'selectItem'],
   props: {
     sections: {
       type: Array,
@@ -50,10 +53,26 @@ export default {
   data() {
     return {
       opened: false,
-      active_item: this.$props.sections[0].items[0]
+      selected: '1'
     }
   },
+  provide() {
+    return {
+      selected: computed(() => this.selected)
+    }
+  },
+
   methods: {
+    selectItem(item) {
+      this.selected = item.value;
+      this.$forceUpdate()
+      // console.log(this.$slots.default())
+      // this.$slots.default().forEach((child) => {
+      //   child.props.active = true; //= child.value === item.value;
+      //   child.ctx.render()
+      // });
+    },
+
     openNav() {
       this.opened = true;
       this.$refs.drawer.style.width = '360px';
@@ -162,8 +181,6 @@ export default {
     &:empty {
       margin: 0;
     }
-
-    text-align: left;
   }
 }
 </style>

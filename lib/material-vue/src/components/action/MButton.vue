@@ -8,6 +8,7 @@
 <script>
 
 export default {
+  name: 'MButton',
   props: {
     enabled: {
       type: Boolean,
