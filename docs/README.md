@@ -17,6 +17,3 @@ that can be easily customized and adapted to different projects.
 Our component library is fully open sourced. Join us and help make our library even better!
 Check out our repository on [GitHub](https://github.com/korpusovmax/material-vue)
 
-
-
-

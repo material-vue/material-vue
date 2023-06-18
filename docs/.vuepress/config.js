@@ -27,6 +27,7 @@ export default  {
                 children: [
                     '/components/button.md',
                     '/components/navigation_drawer.md',
+                    '/components/top_bar.md',
                 ]
             },
             {
