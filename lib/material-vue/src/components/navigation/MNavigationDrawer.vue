@@ -8,19 +8,19 @@
       <slot/>
     </div>
   </div>
+  <div class="m-scrim" ref="scrim"></div>
 </template>
 
 <script>
-import MNavigationDrawerItem from "@/components/navigation/MNavigationDrawerItem.vue";
-import MNavigationDrawerSection from "@/components/navigation/MNavigationDrawerSection.vue";
 import {computed} from "vue";
 export default {
   name: 'MNavigationDrawer',
-  components: {MNavigationDrawerSection, MNavigationDrawerItem},
   expose: ['openNav', 'closeNav', 'selectItem'],
   props: {
-    sections: {
-      type: Array,
+    selected_item: {
+      //only for init
+      type: String,
+      default: ''
     },
     content_area: {
       type: String,
@@ -35,16 +35,12 @@ export default {
       type: String,
       default: 'left',
       validator(value) {
-        //TODO: full
         return ['right', 'left', 'full'].includes(value)
       }
     },
     rounded: {
       type: Boolean,
       default: true
-    },
-    mask: {
-      type: String
     },
     style: {
       type: String
@@ -53,12 +49,13 @@ export default {
   data() {
     return {
       opened: false,
-      selected: '1'
+      selected: this.selected_item,
     }
   },
   provide() {
     return {
-      selected: computed(() => this.selected)
+      selected: computed(() => this.selected),
+      selectItem: this.selectItem
     }
   },
 
@@ -66,11 +63,6 @@ export default {
     selectItem(item) {
       this.selected = item.value;
       this.$forceUpdate()
-      // console.log(this.$slots.default())
-      // this.$slots.default().forEach((child) => {
-      //   child.props.active = true; //= child.value === item.value;
-      //   child.ctx.render()
-      // });
     },
 
     openNav() {
@@ -84,17 +76,18 @@ export default {
         }
         document.querySelector(this.content_area).style.setProperty('width', 'calc(100% - 360px)');
       } else {
-        document.getElementsByClassName('m-scrim')[0].style.opacity = '0.4';
+        this.$refs.scrim.classList.add('m-scrim--active');
       }
     },
     closeNav() {
       this.opened = false;
       this.$refs.drawer.style.width = '0';
-      document.querySelector(this.content_area).style.width = '100%';
-      document.querySelector(this.content_area).style.marginLeft = '0';
-      document.querySelector(this.content_area).style.marginRight = '0';
+      const content_el = document.querySelector(this.content_area);
+      content_el.style.width = '100%';
+      content_el.style.marginLeft = '0';
+      content_el.style.marginRight = '0';
       if (this.modal) {
-        document.getElementsByClassName('m-scrim')[0].style.opacity = '0';
+        this.$refs.scrim.classList.remove('m-scrim--active');
       }
     }
   },
@@ -102,11 +95,18 @@ export default {
     this.$refs.drawer.addEventListener('mousedown', (e) => {
       e.stopPropagation();
     })
-    let content_el = document.querySelector(this.content_area);
+    const content_el = document.querySelector(this.content_area);
+    content_el.style.position = 'relative';
     content_el.style.transition = 'margin-left .5s, width .5s, margin-right .5s';
-    document.addEventListener('mousedown', () => {
+    // const scrim = document.createElement("div");
+    // scrim.classList.add('m-scrim')
+    // content_el.append(scrim)
+
+    document.addEventListener('mousedown', (e) => {
+      e.stopPropagation()
       if (this.opened && this.modal) {
         this.closeNav();
+
       }
     })
 
@@ -120,7 +120,7 @@ export default {
       if (new_value) {
         this.closeNav()
       } else {
-        document.getElementsByClassName('m-scrim')[0].style.opacity = '0';
+        this.$refs.scrim.classList.add('m-scrim--active');
         this.openNav()
       }
     },
@@ -142,8 +142,8 @@ export default {
   //padding: 12px; // width 0 doesnt work with this
   overflow: hidden;
 
-  position: fixed;
-  z-index: 10;
+  position: absolute;
+  z-index: 2;
   top: 0;
   left: 0;
   transition: 0.5s;
@@ -154,11 +154,6 @@ export default {
     box-shadow: var(--elevation-1);
   }
 
-
-  &--right {
-    left: unset;
-    right: 0;
-  }
   &--rounded.container--left {
     border-radius: 0 16px 16px 0;
   }
@@ -167,6 +162,16 @@ export default {
   }
   &--rounded.container--full {
     border-radius: 16px;
+  }
+
+
+  &--right {
+    left: unset;
+    right: 0;
+  }
+  &--full {
+    width: 100% !important;
+    border-radius: 0 !important;
   }
 }
 .inner-container {

@@ -1,12 +1,11 @@
 <template>
-  <div ref="btn" class="container" :class="[{'container--enabled':enabled}, type, {'container--wrap': wrap}]">
+  <div ref="btn" class="container" :class="[enabled ? 'container--enabled' : 'container--disabled', type, {'container--wrap': wrap}]">
     <p class="container__label-text m-text m-headline-small"><slot></slot></p>
     <span ref="ripple" class="ripple"></span>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'MButton',
   props: {
@@ -49,6 +48,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .container {
   position: relative;
 
@@ -79,13 +79,20 @@ export default {
     max-width: min-content;
   }
 
-  &:not(&--enabled) {
+  &--disabled {
     cursor: default;
-    background-color: var(--primary-container-color-a18);
-    color: var(--on-surface);
-    .container__label-text {
-      opacity: 38%;
+    //background-color: var(--primary-container-color-a18);
+    &.filled {
+      background-color: var(--primary-color-a12) !important;
     }
+    &.outlined &.filled-tonal {
+      background-color: var(--on-surface-a12) !important;
+    }
+
+    color: var(--on-surface-a38) !important;
+    //.container__label-text {
+    //  opacity: 38%;
+    //}
   }
   &--enabled:not(.outlined) {
     &:hover:not(&:active) {
@@ -105,7 +112,7 @@ export default {
 .outlined {
   color: var(--primary-color);
   border: 1px solid var(--outline);
-  &:hover:not(&:active) {
+  &:hover:not(&:active):not(.container--disabled) {
     background-color: var(--primary-color-a8);
   }
 }

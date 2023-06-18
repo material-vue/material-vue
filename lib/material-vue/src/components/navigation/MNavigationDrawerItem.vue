@@ -1,5 +1,5 @@
 <template>
-  <div ref="item" class="item" :class="[isActive]" @click="selectItem">
+  <div ref="item" class="item" :class="[isActive]" @click="selectItem({'value': this.value})">
     <p class="item__label m-text m-label-large" v-html="content"></p>
     <span ref="ripple" class="ripple"></span>
   </div>
@@ -18,11 +18,11 @@ export default {
     }
   },
   methods: {
-    selectItem() {
-      toRaw(this.$parent).selectItem({'value': this.value})
-    },
+    // selectItem() {
+    //   toRaw(this.$parent).selectItem({'value': this.value})
+    // },
   },
-  inject: ['selected'],
+  inject: ['selected', 'selectItem'],
   computed: {
     isActive() {
       return this.selected === this.value ? 'item--active' : 'item--inactive';
@@ -38,8 +38,8 @@ export default {
       const radius = diameter / 2;
 
       circle.style.width = circle.style.height = `${diameter}px`;
-      circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
-      circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+      circle.style.left = `${event.positionX - button.offsetLeft - radius}px`;
+      circle.style.top = `${event.positionY - button.offsetTop - radius}px`;
 
       button.removeChild(circle);
       button.appendChild(circle)

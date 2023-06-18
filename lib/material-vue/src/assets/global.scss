@@ -11,7 +11,7 @@
 
 
 //COLOR
-$primary-key-color: rgb(1, 109, 197);
+$primary-key-color: rgb(77, 37, 145);
 $secondary-key-color: rgb(123, 255, 0);
 //TODO: ter-clr
 
@@ -43,11 +43,11 @@ $on-secondary-color-dark: change-color($secondary-key-color, $lightness: 20%);
 $secondary-container-dark: change-color(change-color($secondary-key-color, $lightness: 30%), $saturation: 13%);
 $on-secondary-container-dark: change-color(change-color($secondary-key-color, $lightness: 90%), $saturation: 60%);
 
-
-:root {
+@mixin light() {
   //primary
   --primary-color: #{$primary-color-light};
   --primary-color-a8: #{rgba($primary-color-light, 8%)};
+  --primary-color-a12: #{rgba($primary-color-light, 12%)};
   --on-primary-color: #{$on-primary-color-light};
   --primary-container-color: #{$primary-container-light};
   --on-primary-container-color: #{$on-primary-container-light};
@@ -73,6 +73,8 @@ $on-secondary-container-dark: change-color(change-color($secondary-key-color, $l
   --surface-container-highest: #{mix(#E6E0E9, $primary-key-color, 79%)};
   --on-surface: #1D1B20;
   --on-surface-a8: rgba(29, 27, 32, 0.05);
+  --on-surface-a12: rgba(29, 27, 32, 0.12);
+  --on-surface-a38: rgba(29, 27, 32, 0.38);
   --on-surface-var: #49454F;
   --outline: #79747E;
   --outline-var: #CAC4D0;
@@ -82,11 +84,12 @@ $on-secondary-container-dark: change-color(change-color($secondary-key-color, $l
   --elevation-2: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
   --elevation-3: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
 }
-//dark theme
-[m-theme="dark"] {
+
+@mixin dark() {
   //primary
   --primary-color: #{$primary-color-dark};
   --primary-color-a8: #{rgba($primary-color-dark, 8%)};
+  --primary-color-a12: #{rgba($primary-color-dark, 12%)};
   --on-primary-color: #{$on-primary-color-dark};
   --primary-container-color: #{$primary-container-dark};
   --on-primary-container-color: #{$on-primary-container-dark};
@@ -109,6 +112,8 @@ $on-secondary-container-dark: change-color(change-color($secondary-key-color, $l
   --surface-container-highest: #{mix(#36343B, $primary-key-color, 77%)};
   --on-surface: #E6E0E9;
   --on-surface-a8: rgba(230, 224, 233, 0.05);
+  --on-surface-a12: rgba(230, 224, 233, 0.12);
+  --on-surface-a38: rgba(230, 224, 233, 0.38);
   --on-surface-var: #CAC4D0;
   --outline: #938F99;
   --outline-var: #49454F;
@@ -117,6 +122,19 @@ $on-secondary-container-dark: change-color(change-color($secondary-key-color, $l
   --elevation-1: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);
   --elevation-2: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);
   --elevation-3: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+:root {
+  @include light
+}
+
+//dark theme
+[m-theme="dark"], .dark {
+  @include dark
+}
+
+.light {
+  @include light
 }
 
 
@@ -218,12 +236,20 @@ $on-secondary-container-dark: change-color(change-color($secondary-key-color, $l
 
 //SCRIM
 .m-scrim {
-  position: fixed;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+
   pointer-events: none;
-  inset: 0;
-  background-color: black;
-  opacity: 0%;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(black, 0);
   transition: opacity .5s;
+}
+.m-scrim--active {
+  background-color: rgba(black, 0.4);
+  pointer-events: unset;
 }
 
 //span {
