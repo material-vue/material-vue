@@ -46,7 +46,7 @@ export default {
   top: 0;
   padding: 18px;
 
-  background: var(--surface-container-lowest);
+  background: var(--md-sys-color-surfaceContainerlowest);
   color: var(--on-surface);
 
   transition: 0.4s;
@@ -68,7 +68,7 @@ export default {
       box-shadow: var(--elevation-2);
     }
     &.behavior_background {
-      background: var(--surface-container-low);
+      background: var(--md-sys-color-surfaceContainerLowest);
     }
     //padding: 8px 16px;
   }

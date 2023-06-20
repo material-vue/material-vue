@@ -138,7 +138,7 @@ export default {
 .container {
   height: 100%;
   width: 360px;
-  background: var(--surface-container-low);
+  background: var(--md-sys-color-surfaceContainerLow);
   //padding: 12px; // width 0 doesnt work with this
   overflow: hidden;
 
@@ -150,7 +150,7 @@ export default {
 
   &--modal {
     width: 0;
-    background: var(--surface-container-low);
+    background: var(--md-sys-color-surfaceContainerLowest);
     box-shadow: var(--elevation-1);
   }
 
@@ -180,7 +180,7 @@ export default {
   padding: 12px;
 
 
-  color: var(--on-surface-var);
+  color: var(--md-sys-color-onSurfaceVariant);
   &__headline {
     margin: 18px 8px 18px 16px;
     &:empty {

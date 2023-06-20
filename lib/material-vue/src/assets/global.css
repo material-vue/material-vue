@@ -8,58 +8,42 @@
 }
 
 :root {
-  --primary-color: rgb(65, 31, 122);
-  --primary-color-a8: rgba(65, 31, 122, 0.08);
-  --primary-color-a12: rgba(65, 31, 122, 0.12);
-  --on-primary-color: white;
-  --primary-container-color: #cfb3ff;
-  --on-primary-container-color: #110821;
-  --secondary-color: rgb(126, 58, 95);
-  --secondary-color-a8: rgba(126, 58, 95, 0.08);
-  --on-secondary-color: #f3eef6;
-  --secondary-container-color: #cfbddb;
-  --on-secondary-container-color: #160e1b;
-  --primary-container-color-a18: rgba(89, 82, 100, 0.12);
-  --surface-dim: #c4b8d3;
-  --surface: #f2e8f7;
-  --surface-bright: #FEF7FF;
-  --surface-container-lowest: #FFFFFF;
-  --surface-container-low: #efe8f5;
-  --surface-container: #ddd3ea;
-  --surface-container-high: #cfc3df;
-  --surface-container-highest: #c6b9d7;
+  --primary-color-a8: rgba(104, 112, 42, 0.08);
+  --primary-color-a12: rgba(104, 112, 42, 0.12);
+  --on-primary-container-color: #1c1e0b;
+  --secondary-color: rgb(115, 88, 66);
+  --secondary-color-a8: rgba(115, 88, 66, 0.08);
+  --on-secondary-color: #f3f6ee;
+  --primary-container-color-a18: rgba(129, 132, 108, 0.12);
   --on-surface: #1D1B20;
   --on-surface-a8: rgba(29, 27, 32, 0.05);
   --on-surface-a12: rgba(29, 27, 32, 0.12);
   --on-surface-a38: rgba(29, 27, 32, 0.38);
-  --on-surface-var: #49454F;
-  --outline: #79747E;
-  --outline-var: #CAC4D0;
   --elevation-1: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
   --elevation-2: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
   --elevation-3: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 [m-theme=dark], .dark {
-  --primary-color: #cfb3ff;
-  --primary-color-a8: rgba(207, 179, 255, 0.08);
-  --primary-color-a12: rgba(207, 179, 255, 0.12);
-  --on-primary-color: #2b1551;
-  --primary-container-color: #411f7a;
-  --on-primary-container-color: #e0d1fa;
-  --secondary-color: #dbcde4;
-  --secondary-color-a8: rgba(219, 205, 228, 0.08);
-  --on-secondary-color: #362442;
-  --secondary-container-color: #4f4356;
-  --on-secondary-container-color: #e9d6f5;
-  --surface-dim: #1e152e;
-  --surface: #181320;
+  --primary-color: #f7ffb3;
+  --primary-color-a8: rgba(247, 255, 179, 0.08);
+  --primary-color-a12: rgba(247, 255, 179, 0.12);
+  --on-primary-color: #454a1c;
+  --primary-container-color: #707a1f;
+  --on-primary-container-color: #f5fad1;
+  --secondary-color: #dce4cd;
+  --secondary-color-a8: rgba(220, 228, 205, 0.08);
+  --on-secondary-color: #384224;
+  --secondary-container-color: #505643;
+  --on-secondary-container-color: #eaf5d6;
+  --surface-dim: #2e2e1f;
+  --surface: #1e1d1b;
   --surface-bright: #3B383E;
   --surface-container-lowest: #0F0D13;
-  --surface-container-low: #241d31;
-  --surface-container: #282038;
-  --surface-container-high: #322843;
-  --surface-container-highest: #3b314f;
+  --surface-container-low: #313125;
+  --surface-container: #37372b;
+  --surface-container-high: #434433;
+  --surface-container-highest: #4f503c;
   --on-surface: #E6E0E9;
   --on-surface-a8: rgba(230, 224, 233, 0.05);
   --on-surface-a12: rgba(230, 224, 233, 0.12);
@@ -73,33 +57,17 @@
 }
 
 .light {
-  --primary-color: rgb(65, 31, 122);
-  --primary-color-a8: rgba(65, 31, 122, 0.08);
-  --primary-color-a12: rgba(65, 31, 122, 0.12);
-  --on-primary-color: white;
-  --primary-container-color: #cfb3ff;
-  --on-primary-container-color: #110821;
-  --secondary-color: rgb(126, 58, 95);
-  --secondary-color-a8: rgba(126, 58, 95, 0.08);
-  --on-secondary-color: #f3eef6;
-  --secondary-container-color: #cfbddb;
-  --on-secondary-container-color: #160e1b;
-  --primary-container-color-a18: rgba(89, 82, 100, 0.12);
-  --surface-dim: #c4b8d3;
-  --surface: #f2e8f7;
-  --surface-bright: #FEF7FF;
-  --surface-container-lowest: #FFFFFF;
-  --surface-container-low: #efe8f5;
-  --surface-container: #ddd3ea;
-  --surface-container-high: #cfc3df;
-  --surface-container-highest: #c6b9d7;
+  --primary-color-a8: rgba(104, 112, 42, 0.08);
+  --primary-color-a12: rgba(104, 112, 42, 0.12);
+  --on-primary-container-color: #1c1e0b;
+  --secondary-color: rgb(115, 88, 66);
+  --secondary-color-a8: rgba(115, 88, 66, 0.08);
+  --on-secondary-color: #f3f6ee;
+  --primary-container-color-a18: rgba(129, 132, 108, 0.12);
   --on-surface: #1D1B20;
   --on-surface-a8: rgba(29, 27, 32, 0.05);
   --on-surface-a12: rgba(29, 27, 32, 0.12);
   --on-surface-a38: rgba(29, 27, 32, 0.38);
-  --on-surface-var: #49454F;
-  --outline: #79747E;
-  --outline-var: #CAC4D0;
   --elevation-1: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
   --elevation-2: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
   --elevation-3: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
@@ -212,7 +180,7 @@
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0);
-  transition: opacity 0.5s;
+  transition: background-color 0.5s;
 }
 
 .m-scrim--active {
@@ -224,13 +192,21 @@ span.ripple {
   position: absolute;
   border-radius: 50%;
   transform: scale(0);
-  animation: ripple 550ms ease-in;
-  background-color: rgba(255, 255, 255, 0.4);
+  animation: ripple 300ms ease-in;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark span.ripple {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.light span.ripple {
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 @keyframes ripple {
   to {
-    transform: scale(4);
+    transform: scale(2.5);
     opacity: 0;
   }
 }

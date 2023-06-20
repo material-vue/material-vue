@@ -1,7 +1,7 @@
 <template>
   <div ref="btn" class="container" :class="[enabled ? 'container--enabled' : 'container--disabled', type, {'container--wrap': wrap}]">
     <p class="container__label-text m-text m-headline-small"><slot></slot></p>
-    <span ref="ripple" class="ripple"></span>
+    <span ref="btn_ripple" class="ripple"></span>
   </div>
 </template>
 
@@ -30,19 +30,19 @@ export default {
     function createRipple(event) {
       const button = event.currentTarget;
 
-      const circle = refs.ripple;
+      const circle = refs.btn_ripple;
       const diameter = Math.max(button.clientWidth, button.clientHeight);
       const radius = diameter / 2;
 
       circle.style.width = circle.style.height = `${diameter}px`;
-      circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
-      circle.style.top = '10px';
+      circle.style.left = `${event.clientX - button.getBoundingClientRect().left - radius}px`;
+      circle.style.top = `${event.clientY - button.getBoundingClientRect().top - radius}px`;
 
       button.removeChild(circle);
       button.appendChild(circle)
     }
 
-    refs.btn.addEventListener('click', createRipple)
+    refs.btn.addEventListener('mousedown', createRipple)
   }
 }
 </script>
@@ -60,7 +60,6 @@ export default {
 
   cursor: pointer;
   transition: background 200ms;
-  position: relative;
   overflow: hidden;
   &__label-text {
     white-space: nowrap;
@@ -102,17 +101,17 @@ export default {
 }
 
 .filled {
-  background-color: var(--primary-color);
-  color: var(--on-primary-color);
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-onPrimary);
 }
 .filled-tonal {
-  background-color: var(--secondary-container-color);
-  color: var(--on-secondary-container-color);
+  background-color: var(--md-sys-color-secondaryContainer);
+  color: var(--md-sys-color-onSecondaryContainer);
 }
 .outlined {
-  color: var(--primary-color);
-  border: 1px solid var(--outline);
-  &:hover:not(&:active):not(.container--disabled) {
+  color: var(--md-sys-color-primary);
+  border: 1px solid var(--md-sys-color-outline);
+  &:hover:not(.container--disabled) {
     background-color: var(--primary-color-a8);
   }
 }

@@ -31,18 +31,18 @@ export default {
   mounted() {
     let refs = this.$refs;
     function createRipple(event) {
-      const button = event.currentTarget;
+      const element = event.currentTarget;
 
       const circle = refs.ripple;
-      const diameter = Math.max(button.clientWidth, button.clientHeight);
+      const diameter = Math.max(element.clientWidth, element.clientHeight);
       const radius = diameter / 2;
 
       circle.style.width = circle.style.height = `${diameter}px`;
-      circle.style.left = `${event.positionX - button.offsetLeft - radius}px`;
-      circle.style.top = `${event.positionY - button.offsetTop - radius}px`;
+      circle.style.left = `${event.clientX - element.getBoundingClientRect().left - radius}px`;
+      circle.style.top = `${event.clientY - element.getBoundingClientRect().top - radius}px`;
 
-      button.removeChild(circle);
-      button.appendChild(circle)
+      element.removeChild(circle);
+      element.appendChild(circle)
     }
 
     refs.item.addEventListener('click', createRipple)
@@ -67,11 +67,11 @@ export default {
   padding-right: 24px;
   border-radius: 100px;
 
-  color: var(--on-surface-var);
+  color: var(--md-sys-color-onSurfaceVariant);
 
   &--active {
-    background: var(--secondary-container-color);
-    color: var(--on-secondary-container-color);
+    background: var(--md-sys-color-secondaryContainer);
+    color: var(--md-sys-color-onSecondaryContainer);
   }
   &--inactive:hover {
     background: var(--on-surface-a8);

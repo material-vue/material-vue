@@ -11,9 +11,8 @@
 
 
 //COLOR
-$primary-key-color: rgb(77, 37, 145);
+$primary-key-color: rgb(163, 175, 65);
 $secondary-key-color: rgb(123, 255, 0);
-//TODO: ter-clr
 
 
 //auto-generated triad color complementary combination
@@ -45,39 +44,39 @@ $on-secondary-container-dark: change-color(change-color($secondary-key-color, $l
 
 @mixin light() {
   //primary
-  --primary-color: #{$primary-color-light};
+  //--primary-color: #{$primary-color-light};
   --primary-color-a8: #{rgba($primary-color-light, 8%)};
   --primary-color-a12: #{rgba($primary-color-light, 12%)};
-  --on-primary-color: #{$on-primary-color-light};
-  --primary-container-color: #{$primary-container-light};
+  //--on-primary-color: #{$on-primary-color-light};
+  //--primary-container-color: #{$primary-container-light};
   --on-primary-container-color: #{$on-primary-container-light};
 
   //secondary
   --secondary-color: #{$secondary-color-light};
   --secondary-color-a8: #{rgba($secondary-color-light, 8%)};
   --on-secondary-color: #{$on-secondary-color-light};
-  --secondary-container-color: #{$secondary-container-light};
-  --on-secondary-container-color: #{$on-secondary-container-light};
+  //--secondary-container-color: #{$secondary-container-light};
+  //--on-secondary-container-color: #{$on-secondary-container-light};
 
   //disabled
   --primary-container-color-a18: #{change-color(rgba($primary-key-color, 12%), $saturation: 10%)};
 
   //surface
-  --surface-dim: #{mix(#DED8E1, $primary-key-color, 82%)};
-  --surface: #{mix(#FEF7FF, $primary-key-color, 93%)};
-  --surface-bright: #FEF7FF;
-  --surface-container-lowest: #FFFFFF;
-  --surface-container-low: #{mix(#F7F2FA, $primary-key-color, 95%)};
-  --surface-container: #{mix(#F3EDF7, $primary-key-color, 87%)};
-  --surface-container-high: #{mix(#ECE6F0, $primary-key-color, 82%)};
-  --surface-container-highest: #{mix(#E6E0E9, $primary-key-color, 79%)};
+  //--surface-dim: #{mix(#DED8E1, $primary-key-color, 82%)};
+  //--surface: #{mix(#FEF7FF, $primary-key-color, 93%)};
+  //--surface-bright: #FEF7FF;
+  //--surface-container-lowest: #FFFFFF;
+  //--surface-container-low: #{mix(#F7F2FA, $primary-key-color, 98%)};
+  //--surface-container: #{mix(#F3EDF7, $primary-key-color, 87%)};
+  //--surface-container-high: #{mix(#ECE6F0, $primary-key-color, 82%)};
+  //--surface-container-highest: #{mix(#E6E0E9, $primary-key-color, 79%)};
   --on-surface: #1D1B20;
   --on-surface-a8: rgba(29, 27, 32, 0.05);
   --on-surface-a12: rgba(29, 27, 32, 0.12);
   --on-surface-a38: rgba(29, 27, 32, 0.38);
-  --on-surface-var: #49454F;
-  --outline: #79747E;
-  --outline-var: #CAC4D0;
+  //--on-surface-var: #49454F;
+  //--outline: #79747E;
+  //--outline-var: #CAC4D0;
 
   //elevation (box-shadow param)
   --elevation-1: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
@@ -245,7 +244,7 @@ $on-secondary-container-dark: change-color(change-color($secondary-key-color, $l
   height: 100%;
   width: 100%;
   background-color: rgba(black, 0);
-  transition: opacity .5s;
+  transition: background-color .5s;
 }
 .m-scrim--active {
   background-color: rgba(black, 0.4);
@@ -261,13 +260,19 @@ span.ripple {
   position: absolute;
   border-radius: 50%;
   transform: scale(0);
-  animation: ripple 550ms ease-in;
-  background-color: rgba(255, 255, 255, 0.4);
+  animation: ripple 300ms ease-in;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+.dark span.ripple {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.light span.ripple {
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 @keyframes ripple {
   to {
-    transform: scale(4);
+    transform: scale(2.5);
     opacity: 0;
   }
 }
