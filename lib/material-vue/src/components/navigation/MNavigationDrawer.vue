@@ -17,7 +17,7 @@ export default {
   name: 'MNavigationDrawer',
   expose: ['openNav', 'closeNav', 'selectItem'],
   props: {
-    selected_item: {
+    selected: {
       //only for init
       type: String,
       default: ''
@@ -49,19 +49,19 @@ export default {
   data() {
     return {
       opened: false,
-      selected: this.selected_item,
+      selected_item: this.selected,
     }
   },
   provide() {
     return {
-      selected: computed(() => this.selected),
+      selected_item: computed(() => this.selected_item),
       selectItem: this.selectItem
     }
   },
 
   methods: {
     selectItem(item) {
-      this.selected = item.value;
+      this.selected_item = item.value;
       this.$forceUpdate()
     },
 

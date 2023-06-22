@@ -17,15 +17,10 @@ export default {
       type: String
     }
   },
-  methods: {
-    // selectItem() {
-    //   toRaw(this.$parent).selectItem({'value': this.value})
-    // },
-  },
-  inject: ['selected', 'selectItem'],
+  inject: ['selected_item', 'selectItem'],
   computed: {
     isActive() {
-      return this.selected === this.value ? 'item--active' : 'item--inactive';
+      return this.selected_item === this.value ? 'item--active' : 'item--inactive';
     }
   },
   mounted() {
