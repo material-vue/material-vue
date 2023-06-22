@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@highlightjs/vue-plugin": "^2.1.0",
+    "@material/material-color-utilities": "^0.2.6",
     "vue": "^3.2.47"
   },
   "devDependencies": {

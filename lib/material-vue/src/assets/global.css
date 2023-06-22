@@ -7,6 +7,28 @@
   -moz-box-sizing: border-box;
 }
 
+.m-state {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+.m-state:hover {
+  opacity: 8%;
+}
+.m-state:active, .m-state--focus {
+  opacity: 12%;
+}
+.m-state--drag {
+  opacity: 16%;
+}
+.m-state--disabled {
+  opacity: 0 !important;
+}
+
 :root {
   --primary-color-a8: rgba(104, 112, 42, 0.08);
   --primary-color-a12: rgba(104, 112, 42, 0.12);
@@ -192,19 +214,19 @@ span.ripple {
   position: absolute;
   border-radius: 50%;
   transform: scale(0);
-  animation: ripple 300ms ease-in;
-  background-color: rgba(255, 255, 255, 0.15);
-}
-
-.dark span.ripple {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-.light span.ripple {
-  background-color: rgba(255, 255, 255, 0.15);
+  animation: ripple 400ms ease-in;
+  background-color: white;
+  opacity: 0;
+  z-index: 3;
 }
 
 @keyframes ripple {
+  from {
+    opacity: 0;
+  }
+  35% {
+    opacity: 0.15;
+  }
   to {
     transform: scale(2.5);
     opacity: 0;
