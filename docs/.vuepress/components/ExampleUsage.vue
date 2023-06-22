@@ -4,7 +4,7 @@
       <p class="m-text m-headline-small">{{title}}</p>
       <div class="icons_block">
         <span class="theme-switch material-symbols-outlined" @click="dark_theme = !dark_theme">{{dark_theme ? 'light_mode' : 'dark_mode'}}</span>
-        <span class="theme-switch material-symbols-outlined" @click="code_opened = !code_opened; open_code()">code</span>
+        <span class="theme-switch material-symbols-outlined" @click="open_code(); code_opened = !code_opened;">code</span>
       </div>
     </div>
     <div class="code_block" ref="code_ref" :class="[code_opened? 'code_block--opened' : 'code_block--closed']">
@@ -23,7 +23,8 @@ import 'highlight.js/styles/github-dark.css';
 export default {
   props: {
     code: {
-      type: String
+      type: String,
+      default: ''
     },
     title: {
       type: String
@@ -48,6 +49,8 @@ export default {
     }
   },
   mounted() {
+    this.dark_theme = document.querySelector('.dark') != null
+
     let code_result = ''
     let tab_prefix = ''
     let tag_closed = []
@@ -61,11 +64,9 @@ export default {
     for (let stroke of this.$props.code.split('\n')) {
       if (stroke.startsWith('</')) {
         tab_prefix = tab_prefix.substring(1)
-        console.log(tab_prefix, '00', stroke)
 
       }
       code_result += tab_prefix + stroke + '\n'
-      console.log(tag_closed[0], stroke, tab_prefix)
       if (stroke.startsWith(tag_closed[0]+' ') || stroke.startsWith(tag_closed[0]+'>')) {
         tab_prefix += '\t'
         tag_closed.shift()
@@ -100,7 +101,7 @@ export default {
 
 
   border-radius: 16px;
-  border: solid 1px var(--outline);
+  border: solid 1px var(--md-sys-color-outline);
   overflow: hidden;
 
   &__top {
@@ -111,12 +112,12 @@ export default {
     justify-content: space-between;
     align-items: center;
 
-    border-bottom: solid 1px var(--outline);
+    border-bottom: solid 1px var(--md-sys-color-outline);
     background-color: rgba(0, 0, 0, 0.10);
   }
 
   .m-text {
-    color: var(--on-primary-container-color)
+    color: var(--md-sys-color-onPrimaryContainer)
   }
 }
 .content {
@@ -126,7 +127,7 @@ export default {
   overflow-y: auto;
 
   padding: 16px;
-  background-color: var(--surface-container-lowest);
+  background-color: var(--md-sys-color-surfaceContainerLowest);
 }
 .h-gapped {
   display: flex;
@@ -170,7 +171,7 @@ pre {
 .code_block {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.2s ease-out;
+  transition: max-height 0.4s ease-in-out;
 
   &--closed {
     max-height: 0;

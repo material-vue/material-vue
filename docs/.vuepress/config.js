@@ -26,6 +26,7 @@ export default  {
                 collapsible: true,
                 children: [
                     '/components/button.md',
+                    '/components/radio_button.md',
                     '/components/navigation_drawer.md',
                     '/components/top_bar.md',
                 ]
@@ -35,7 +36,8 @@ export default  {
                 collapsible: true,
                 children: [
                     '/api/icons.md',
-                    '/api/color.md',
+                    '/api/material_colors.md',
+                    '/api/typography.md',
                 ]
             },
         ],
@@ -45,8 +47,9 @@ export default  {
             components: {
                 Load: path.resolve(__dirname, './components/load.vue'),
                 ExampleUsage: path.resolve(__dirname, './components/ExampleUsage.vue'),
-                ModalDrawerExample: path.resolve(__dirname, './components/ModalDrawerExample.vue'),
                 MButton: path.resolve(__dirname, '../../lib/material-vue/src/components/action/MButton.vue'),
+                MRadioButton: path.resolve(__dirname, '../../lib/material-vue/src/components/action/MRadioButton.vue'),
+                MRadioGroup: path.resolve(__dirname, '../../lib/material-vue/src/components/action/MRadioGroup.vue'),
             },
             componentsDir: path.resolve(__dirname, '../../lib/material-vue/src/components/navigation'),
         }),
