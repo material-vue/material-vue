@@ -54,4 +54,5 @@ export default  {
             componentsDir: path.resolve(__dirname, '../../lib/material-vue/src/components/navigation'),
         }),
     ],
+    base: '/material-vue/'
 }

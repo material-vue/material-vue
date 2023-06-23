@@ -79,7 +79,10 @@ export default {
   },
   computed: {
     get_height() {
-      return this.$refs.code_ref.scrollHeight+24+'px'
+      if (this.$refs.code_ref) {
+        return this.$refs.code_ref.scrollHeight+24+'px'
+      }
+      return 0;
     },
     get_code() {
       return this.code_tabbed;
