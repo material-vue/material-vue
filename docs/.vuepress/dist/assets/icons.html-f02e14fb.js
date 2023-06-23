@@ -1,0 +1,1 @@
+const a=JSON.parse('{"key":"v-8c4f0766","path":"/api/icons.html","title":"Material Icons","lang":"en-US","frontmatter":{},"headers":[],"git":{"updatedTime":1687122301000,"contributors":[{"name":"korpusovmaxim858","email":"korpusovmax@gmail.com","commits":2}]},"filePathRelative":"api/icons.md"}');export{a as data};

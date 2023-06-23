@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-6f01c0e0","path":"/components/top_bar.html","title":"Top app bar","lang":"en-US","frontmatter":{},"headers":[],"git":{"updatedTime":1687122301000,"contributors":[{"name":"korpusovmaxim858","email":"korpusovmax@gmail.com","commits":2}]},"filePathRelative":"components/top_bar.md"}');export{t as data};
