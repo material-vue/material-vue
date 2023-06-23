@@ -1,1 +1,0 @@
-import{_ as a,o as t,c,a as e,b as o}from"./app-275e2576.js";const s={},n=e("h1",{id:"material-icons",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#material-icons","aria-hidden":"true"},"#"),o(" Material Icons")],-1),r=[n];function i(_,d){return t(),c("div",null,r)}const h=a(s,[["render",i],["__file","icons.html.vue"]]);export{h as default};
