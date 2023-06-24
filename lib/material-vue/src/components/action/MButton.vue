@@ -1,5 +1,6 @@
 <template>
   <div ref="btn" class="container" :class="[enabled ? 'container--enabled' : 'container--disabled', type, {'container--wrap': wrap}]">
+    <div class="m-state" :class="[enabled ? 'm-state--enabled' : 'm-state--disabled']"></div>
     <p class="container__label-text m-text m-headline-small"><slot></slot></p>
     <span ref="btn_ripple" class="ripple"></span>
   </div>
@@ -31,6 +32,8 @@ export default {
       const button = event.currentTarget;
 
       const circle = refs.btn_ripple;
+      button.removeChild(circle);
+
       const diameter = Math.max(button.clientWidth, button.clientHeight);
       const radius = diameter / 2;
 
@@ -38,7 +41,7 @@ export default {
       circle.style.left = `${event.clientX - button.getBoundingClientRect().left - radius}px`;
       circle.style.top = `${event.clientY - button.getBoundingClientRect().top - radius}px`;
 
-      button.removeChild(circle);
+
       button.appendChild(circle)
     }
 
@@ -103,16 +106,25 @@ export default {
 .filled {
   background-color: var(--md-sys-color-primary);
   color: var(--md-sys-color-onPrimary);
+  .m-state {
+    background-color: var(--md-sys-color-onPrimary);
+  }
 }
 .filled-tonal {
   background-color: var(--md-sys-color-secondaryContainer);
   color: var(--md-sys-color-onSecondaryContainer);
+  .m-state {
+    background-color: var(--md-sys-color-onSecondaryContainer);
+  }
 }
 .outlined {
   color: var(--md-sys-color-primary);
   border: 1px solid var(--md-sys-color-outline);
   &:hover:not(.container--disabled) {
-    background-color: var(--primary-color-a8);
+    //background-color: var(--primary-color-a8);
+  }
+  .m-state {
+    background-color: var(--md-sys-color-primary);
   }
 }
 </style>

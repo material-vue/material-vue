@@ -5,7 +5,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
   -moz-box-sizing: border-box;
+
+  -webkit-tap-highlight-color: transparent;
 }
 
 //STATE LAYERS
@@ -284,8 +287,9 @@ span.ripple {
   position: absolute;
   border-radius: 50%;
   transform: scale(0);
-  animation: ripple 400ms ease-in;
-  background-color: white;
+  animation: ripple 450ms ease-in;
+  //background-color: white;
+  background: radial-gradient(white, transparent);
   opacity: 0;
   z-index: 3;
 }
@@ -295,10 +299,10 @@ span.ripple {
     opacity: 0;
   }
   35% {
-    opacity: 0.15;
+    opacity: 0.25;
   }
   to {
-    transform: scale(2.5);
+    transform: scale(4.5);
     opacity: 0;
   }
 }

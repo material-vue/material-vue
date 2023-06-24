@@ -103,6 +103,8 @@ export default {
   min-width: 40px;
   height: 40px;
   &__icon {
+    user-select: none;
+
     display: flex;
 
     font-size: 20px;
@@ -142,7 +144,7 @@ export default {
 }
 
 .ripple {
-  background-color: var(--md-sys-color-primary);
+  background: radial-gradient(var(--md-sys-color-primary), transparent);
   animation: ripple 350ms ease-in;
 }
 
