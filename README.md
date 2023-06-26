@@ -26,7 +26,31 @@ app.mount('#app')
 ```
 
 ## Examples
-All examples will be placed to the `/playground/` in the future.
+All examples will be placed to the `/examples/` in the future.
 
 ## Open-source
 Our component library is fully open sourced. Join us and help make our library even better!
+### Installation of the project
+#### Cloning the repository
+```sh
+git clone https://github.com/korpusovmax/material-vue
+cd material-vue
+```
+#### Setting up
+```sh
+cd lib\material-vue
+npm install
+```
+
+#### Testing your updates in playground
+Playground is a sample setup of the vue app with imported MaterialVue. So
+playground is just ready to use project.
+
+To play:
+Open new tab in console, go to the playground dir.
+```sh
+cd playground
+npm run serve
+```
+You should import all new components and functionality to the playground
+from the library dir.
