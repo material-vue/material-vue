@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
 
 * {
   margin: 0;
@@ -22,7 +24,7 @@
   z-index: 1;
 
 
-  &:hover {
+  &--hover {
     opacity: 8%;
   }
   &:active, &--focus {
@@ -36,75 +38,7 @@
   }
 }
 
-
-//COLOR
-$primary-key-color: rgb(163, 175, 65);
-$secondary-key-color: rgb(123, 255, 0);
-
-
-//auto-generated triad color complementary combination
-$secondary-key-color: adjust-color($primary-key-color, $hue: 20deg);
-
-$secondary-key-color: rgba(change-color(adjust-color(mix($primary-key-color, $secondary-key-color, 30%), $lightness: 20%), $saturation: 30%), 100%);
-$primary-gray: red(grayscale($primary-key-color));
-$secondary-gray: red(grayscale($secondary-key-color));
-
-$primary-color-light: rgb(red($primary-key-color)/$primary-gray*0.3*256, green($primary-key-color)/$primary-gray*0.3*256, blue($primary-key-color)/$primary-gray*0.3*256);
-$on-primary-color-light: change-color($primary-key-color, $lightness: 100%); //white
-$primary-container-light: change-color(change-color($primary-key-color, $lightness: 85%), $saturation: 100%);
-$on-primary-container-light: change-color($primary-key-color, $lightness: 8%);
-
-$primary-color-dark: change-color(change-color($primary-key-color, $lightness: 85%), $saturation: 100%);
-$on-primary-color-dark: change-color($primary-key-color, $lightness: 20%);
-$primary-container-dark: change-color(change-color($primary-key-color, $lightness: 30%), $saturation: 60%);
-$on-primary-container-dark: change-color(change-color($primary-key-color, $lightness: 90%), $saturation: 80%);
-
-$secondary-color-light: rgb(red($secondary-key-color)/$primary-gray*0.3*256, green($secondary-key-color)/$secondary-gray*0.3*256, blue($secondary-key-color)/$secondary-gray*0.3*256);
-$on-secondary-color-light: change-color($secondary-key-color, $lightness: 95%);
-$secondary-container-light: change-color(change-color($secondary-key-color, $lightness: 80%));
-$on-secondary-container-light: change-color($secondary-key-color, $lightness: 8%);
-
-$secondary-color-dark: change-color(change-color($secondary-key-color, $lightness: 85%), $saturation: 30%);
-$on-secondary-color-dark: change-color($secondary-key-color, $lightness: 20%);
-$secondary-container-dark: change-color(change-color($secondary-key-color, $lightness: 30%), $saturation: 13%);
-$on-secondary-container-dark: change-color(change-color($secondary-key-color, $lightness: 90%), $saturation: 60%);
-
 @mixin light() {
-  //primary
-  //--primary-color: #{$primary-color-light};
-  --primary-color-a8: #{rgba($primary-color-light, 8%)};
-  --primary-color-a12: #{rgba($primary-color-light, 12%)};
-  //--on-primary-color: #{$on-primary-color-light};
-  //--primary-container-color: #{$primary-container-light};
-  --on-primary-container-color: #{$on-primary-container-light};
-
-  //secondary
-  --secondary-color: #{$secondary-color-light};
-  --secondary-color-a8: #{rgba($secondary-color-light, 8%)};
-  --on-secondary-color: #{$on-secondary-color-light};
-  //--secondary-container-color: #{$secondary-container-light};
-  //--on-secondary-container-color: #{$on-secondary-container-light};
-
-  //disabled
-  --primary-container-color-a18: #{change-color(rgba($primary-key-color, 12%), $saturation: 10%)};
-
-  //surface
-  //--surface-dim: #{mix(#DED8E1, $primary-key-color, 82%)};
-  //--surface: #{mix(#FEF7FF, $primary-key-color, 93%)};
-  //--surface-bright: #FEF7FF;
-  //--surface-container-lowest: #FFFFFF;
-  //--surface-container-low: #{mix(#F7F2FA, $primary-key-color, 98%)};
-  //--surface-container: #{mix(#F3EDF7, $primary-key-color, 87%)};
-  //--surface-container-high: #{mix(#ECE6F0, $primary-key-color, 82%)};
-  //--surface-container-highest: #{mix(#E6E0E9, $primary-key-color, 79%)};
-  --on-surface: #1D1B20;
-  --on-surface-a8: rgba(29, 27, 32, 0.05);
-  --on-surface-a12: rgba(29, 27, 32, 0.12);
-  --on-surface-a38: rgba(29, 27, 32, 0.38);
-  //--on-surface-var: #49454F;
-  //--outline: #79747E;
-  //--outline-var: #CAC4D0;
-
   //elevation (box-shadow param)
   --elevation-1: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
   --elevation-2: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
@@ -112,38 +46,6 @@ $on-secondary-container-dark: change-color(change-color($secondary-key-color, $l
 }
 
 @mixin dark() {
-  //primary
-  --primary-color: #{$primary-color-dark};
-  --primary-color-a8: #{rgba($primary-color-dark, 8%)};
-  --primary-color-a12: #{rgba($primary-color-dark, 12%)};
-  --on-primary-color: #{$on-primary-color-dark};
-  --primary-container-color: #{$primary-container-dark};
-  --on-primary-container-color: #{$on-primary-container-dark};
-
-  //secondary
-  --secondary-color: #{$secondary-color-dark};
-  --secondary-color-a8: #{rgba($secondary-color-dark, 8%)};
-  --on-secondary-color: #{$on-secondary-color-dark};
-  --secondary-container-color: #{$secondary-container-dark};
-  --on-secondary-container-color: #{$on-secondary-container-dark};
-
-  //surface
-  --surface-dim: #{mix(#141218, $primary-key-color, 82%)};
-  --surface: #{mix(#141218, $primary-key-color, 93%)};
-  --surface-bright: #3B383E;
-  --surface-container-lowest: #0F0D13;
-  --surface-container-low: #{mix(#1D1B20, $primary-key-color, 85%)};
-  --surface-container: #{mix(#211F26, $primary-key-color, 83%)};
-  --surface-container-high: #{mix(#2B2930, $primary-key-color, 80%)};
-  --surface-container-highest: #{mix(#36343B, $primary-key-color, 77%)};
-  --on-surface: #E6E0E9;
-  --on-surface-a8: rgba(230, 224, 233, 0.05);
-  --on-surface-a12: rgba(230, 224, 233, 0.12);
-  --on-surface-a38: rgba(230, 224, 233, 0.38);
-  --on-surface-var: #CAC4D0;
-  --outline: #938F99;
-  --outline-var: #49454F;
-
   //elevation (box-shadow param)
   --elevation-1: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);
   --elevation-2: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);
@@ -155,7 +57,11 @@ $on-secondary-container-dark: change-color(change-color($secondary-key-color, $l
 }
 
 //dark theme
-[m-theme="dark"], .dark {
+[m-theme="dark"] {
+  @include dark
+}
+
+.dark {
   @include dark
 }
 
@@ -169,6 +75,7 @@ $on-secondary-container-dark: change-color(change-color($secondary-key-color, $l
   font-family: 'Roboto', sans-serif;
   font-style: normal;
 }
+
 
 .m-display-large {
   font-size: 57px;
@@ -278,9 +185,10 @@ $on-secondary-container-dark: change-color(change-color($secondary-key-color, $l
   pointer-events: unset;
 }
 
-//span {
-//  cursor: default;
-//}
+//TODO: if new types will be added
+.material-symbols-outlined, .material-symbols-rounded {
+  cursor: default;
+}
 
 //RIPPLE
 span.ripple {

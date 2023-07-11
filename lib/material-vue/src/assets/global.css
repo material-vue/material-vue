@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 * {
   margin: 0;
   padding: 0;
@@ -17,7 +18,7 @@
   opacity: 0;
   z-index: 1;
 }
-.m-state:hover {
+.m-state--hover {
   opacity: 8%;
 }
 .m-state:active, .m-state--focus {
@@ -31,66 +32,24 @@
 }
 
 :root {
-  --primary-color-a8: rgba(104, 112, 42, 0.08);
-  --primary-color-a12: rgba(104, 112, 42, 0.12);
-  --on-primary-container-color: #1c1e0b;
-  --secondary-color: rgb(115, 88, 66);
-  --secondary-color-a8: rgba(115, 88, 66, 0.08);
-  --on-secondary-color: #f3f6ee;
-  --primary-container-color-a18: rgba(129, 132, 108, 0.12);
-  --on-surface: #1D1B20;
-  --on-surface-a8: rgba(29, 27, 32, 0.05);
-  --on-surface-a12: rgba(29, 27, 32, 0.12);
-  --on-surface-a38: rgba(29, 27, 32, 0.38);
   --elevation-1: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
   --elevation-2: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
   --elevation-3: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-[m-theme=dark], .dark {
-  --primary-color: #f7ffb3;
-  --primary-color-a8: rgba(247, 255, 179, 0.08);
-  --primary-color-a12: rgba(247, 255, 179, 0.12);
-  --on-primary-color: #454a1c;
-  --primary-container-color: #707a1f;
-  --on-primary-container-color: #f5fad1;
-  --secondary-color: #dce4cd;
-  --secondary-color-a8: rgba(220, 228, 205, 0.08);
-  --on-secondary-color: #384224;
-  --secondary-container-color: #505643;
-  --on-secondary-container-color: #eaf5d6;
-  --surface-dim: #2e2e1f;
-  --surface: #1e1d1b;
-  --surface-bright: #3B383E;
-  --surface-container-lowest: #0F0D13;
-  --surface-container-low: #313125;
-  --surface-container: #37372b;
-  --surface-container-high: #434433;
-  --surface-container-highest: #4f503c;
-  --on-surface: #E6E0E9;
-  --on-surface-a8: rgba(230, 224, 233, 0.05);
-  --on-surface-a12: rgba(230, 224, 233, 0.12);
-  --on-surface-a38: rgba(230, 224, 233, 0.38);
-  --on-surface-var: #CAC4D0;
-  --outline: #938F99;
-  --outline-var: #49454F;
+[m-theme=dark] {
+  --elevation-1: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);
+  --elevation-2: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);
+  --elevation-3: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.dark {
   --elevation-1: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);
   --elevation-2: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);
   --elevation-3: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .light {
-  --primary-color-a8: rgba(104, 112, 42, 0.08);
-  --primary-color-a12: rgba(104, 112, 42, 0.12);
-  --on-primary-container-color: #1c1e0b;
-  --secondary-color: rgb(115, 88, 66);
-  --secondary-color-a8: rgba(115, 88, 66, 0.08);
-  --on-secondary-color: #f3f6ee;
-  --primary-container-color-a18: rgba(129, 132, 108, 0.12);
-  --on-surface: #1D1B20;
-  --on-surface-a8: rgba(29, 27, 32, 0.05);
-  --on-surface-a12: rgba(29, 27, 32, 0.12);
-  --on-surface-a38: rgba(29, 27, 32, 0.38);
   --elevation-1: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
   --elevation-2: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
   --elevation-3: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
@@ -209,6 +168,10 @@
 .m-scrim--active {
   background-color: rgba(0, 0, 0, 0.4);
   pointer-events: unset;
+}
+
+.material-symbols-outlined, .material-symbols-rounded {
+  cursor: default;
 }
 
 span.ripple {
