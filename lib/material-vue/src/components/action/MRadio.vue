@@ -1,7 +1,7 @@
 <template>
   <div class="radio-item" @click="handleClick">
     <div ref="radio" class="container" :class="[getChecked ? 'container--checked' : 'container--unchecked']">
-      <div class="m-state"></div>
+      <m-state/>
       <p class="container__icon">
         <span class="material-symbols-outlined">{{getChecked ? 'radio_button_checked' : 'radio_button_unchecked'}}</span>
       </p>
@@ -12,7 +12,11 @@
 </template>
 
 <script>
+import MState from "../utils/MState.vue";
+
 export default {
+  name: 'MRadio',
+  components: {MState},
   expose: ['checked', 'setChecked'],
   data() {
     return {

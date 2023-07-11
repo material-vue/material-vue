@@ -1,14 +1,18 @@
 <template>
   <div ref="btn" class="container" :class="[enabled ? 'container--enabled' : 'container--disabled', type, {'container--wrap': wrap}]">
-    <div class="m-state" :class="[enabled ? 'm-state--enabled' : 'm-state--disabled']"></div>
-    <p class="container__label-text m-text m-headline-small"><slot></slot></p>
+<!--    <div class="m-state" ></div>-->
+    <m-state :class="[enabled ? 'm-state--enabled' : 'm-state--disabled']"></m-state>
+    <p class="container__label-text m-text m-label-large"><slot></slot></p>
     <span ref="btn_ripple" class="ripple"></span>
   </div>
 </template>
 
 <script>
+import MState from "../utils/MState.vue";
+
 export default {
   name: 'MButton',
+  components: {MState},
   props: {
     enabled: {
       type: Boolean,
@@ -55,6 +59,9 @@ export default {
 .container {
   position: relative;
 
+  display: flex;
+  align-items: center;
+
   padding: 10px 24px 10px 16px;
   height: min-content;
   min-width: min-content;
@@ -77,6 +84,8 @@ export default {
       margin-left: 0;
     }
   }
+
+  width: auto;
   &--wrap {
     max-width: min-content;
   }
@@ -85,18 +94,18 @@ export default {
     cursor: default;
     //background-color: var(--primary-container-color-a18);
     &.filled {
-      background-color: var(--primary-color-a12) !important;
+      background-color: var(--md-sys-color-primaryA12) !important;
     }
     &.outlined &.filled-tonal {
-      background-color: var(--on-surface-a12) !important;
+      background-color: var(--md-sys-color-onSurfaceA12) !important;
     }
 
-    color: var(--on-surface-a38) !important;
+    color: var(--md-sys-color-onSurface) !important;
     //.container__label-text {
-    //  opacity: 38%;
+    //  opacity: 68%;
     //}
   }
-  &--enabled:not(.outlined) {
+  &--enabled:not(.outlined):not(.filled-tonal) {
     &:hover:not(&:active) {
       box-shadow: var(--elevation-1);
     }

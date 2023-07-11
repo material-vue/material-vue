@@ -1,5 +1,6 @@
 <template>
   <div ref="item" class="item" :class="[isActive]" @click="selectItem({'value': this.value})">
+    <m-state/>
     <p class="item__label m-text m-label-large" v-html="content"></p>
     <span ref="ripple" class="ripple"></span>
   </div>
@@ -7,8 +8,11 @@
 
 <script>
 import {toRaw} from "vue";
+import MState from "../utils/MState.vue";
 
 export default {
+  name: 'MNavigationDrawerItem',
+  components: {MState},
   props: {
     value: {
       type: String
@@ -68,14 +72,18 @@ export default {
     background: var(--md-sys-color-secondaryContainer);
     color: var(--md-sys-color-onSecondaryContainer);
   }
-  &--inactive:hover {
-    background: var(--on-surface-a8);
-  }
+  //&--inactive:hover {
+  //  background: var(--on-surface-a8);
+  //}
 
   & > p {
     display: flex;
     gap: 8px;
     align-items: center;
   }
+}
+
+.m-state {
+  background-color: var(--md-sys-color-onSecondaryContainer);
 }
 </style>
