@@ -49,7 +49,9 @@ export default {
       button.appendChild(circle)
     }
 
-    refs.btn.addEventListener('mousedown', createRipple)
+    refs.btn.addEventListener('mousedown', (event) => {
+      if (this.enabled) createRipple(event)
+    })
   }
 }
 </script>
