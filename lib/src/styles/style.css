@@ -1,0 +1,6 @@
+@import 'material3/theme.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+

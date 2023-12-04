@@ -1,0 +1,7 @@
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  background: var(--md-sys-color-background);
+}

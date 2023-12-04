@@ -1,0 +1,37 @@
+{
+  "name": "@korpusovmax/material-vue",
+  "version": "1.0.36",
+  "files": [
+    "dist/"
+  ],
+  "type": "module",
+  "main": "dist/material-vue.js",
+  "module": "dist/material-vue.js",
+  "types": "dist/material-vue.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/material-vue.js",
+      "require": "./dist/material-vue.umd.js",
+      "default": "./dist/material-vue.js",
+      "types": "./dist/material-vue.d.ts"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "unplugin-vue-components": "^0.25.2",
+    "vue": "^3.3.8"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "prettier": "3.1.0",
+    "tailwindcss": "^3.3.5",
+    "vite": "^5.0.0"
+  }
+}

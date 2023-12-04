@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded');
+
+@import url(tokens.css);
+@import url(colors.module.css);
+@import url(typography.module.css);
+@import url(theme.light.css);
+@import url(theme.dark.css);
