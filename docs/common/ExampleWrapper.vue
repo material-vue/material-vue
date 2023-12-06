@@ -1,6 +1,9 @@
 <template>
-  <div class="example-wrapper" :class="{'dark': darkMode, 'light': !darkMode}">
-    <div class="icon" @click="darkMode = !darkMode">
+  <div class="example-wrapper" :class="{'dark': darkMode && chosenMode, 'light': !darkMode && chosenMode}">
+    <div class="icon" @click="() => {
+      darkMode = !darkMode
+      chosenMode = true
+    }">
       <DarkModeIcon v-if="!darkMode"/>
       <LightModeIcon v-if="darkMode"/>
     </div>
@@ -12,15 +15,20 @@
 <script setup>
 import DarkModeIcon from "./DarkModeIcon.vue";
 import LightModeIcon from "./LightModeIcon.vue";
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 
 const darkMode = ref(false)
+const chosenMode = ref(false)
 
 defineProps({
   description: {
     type: String,
     default: null
   }
+})
+
+onMounted(() => {
+  darkMode.value = document.documentElement.classList.contains('dark')
 })
 </script>
 
