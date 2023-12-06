@@ -6,6 +6,7 @@
     </div>
     <slot/>
   </div>
+  <p v-if="description" class="label-medium" style="color: var(--md-sys-color-on-surface-variant); margin-top: -8px" v-text="description"/>
 </template>
 
 <script setup>
@@ -14,6 +15,13 @@ import LightModeIcon from "./LightModeIcon.vue";
 import {ref} from "vue";
 
 const darkMode = ref(false)
+
+defineProps({
+  description: {
+    type: String,
+    default: null
+  }
+})
 </script>
 
 <style>
