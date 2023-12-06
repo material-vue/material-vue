@@ -35,8 +35,8 @@ watch(props.checked, () => {
 
 const stateBackground = computed(() => {
   return actualState.value
-    ? 'var(--md-sys-color-primary)'
-    : 'var(--md-sys-color-on-surface)'
+    ? 'background: var(--md-sys-color-primary)'
+    : 'background: var(--md-sys-color-on-surface)'
 })
 
 const rippleBackground = computed(() => {

@@ -3,7 +3,7 @@
     ref="stateEl"
     class="absolute top-0 left-0 right-0 bottom-0 cursor-pointer opacity-0 hover:opacity-[8%] focus:opacity-[12%] active:opacity-[12%]"
     :class="{ 'pointer-events-none': disabled }"
-    :style="`background: ${background}`"
+    :style="`${background}`"
   />
   <span
     ref="rippleEl"
@@ -11,9 +11,7 @@
     :style="`
       background: radial-gradient(
         closest-side,
-        ${
-          rippleBackground ? rippleBackground : background
-        } max(calc(100% - 70px), 65%),
+        ${rippleBg} max(calc(100% - 70px), 65%),
         transparent
       );
     `"
@@ -23,9 +21,9 @@
 <script setup>
 import '../styles/style.css'
 import { EASING } from './utils/motion.js'
-import { onMounted, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 
-defineProps({
+const props = defineProps({
   disabled: {
     type: Boolean,
     default: false,
@@ -45,6 +43,15 @@ const rippleEl = ref(null)
 const rectWidth = ref(null)
 const showRipple = ref(false)
 const ripplePos = ref({ x: 0, y: 0 })
+
+const rippleBg = computed(() => {
+  return props.rippleBackground
+    ? props.rippleBackground
+    : `${
+        props.background.split(' ').find((w) => w.includes('--md-sys-color')) ??
+        'transparent'
+      }`
+})
 
 const PRESS_GROW_MS = 500
 const MINIMUM_PRESS_MS = 300
