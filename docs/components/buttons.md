@@ -52,6 +52,25 @@ You can use all icons from [Google's material symbols](https://fonts.google.com/
 Don’t use two icons in the same button, as said in [guidelines](https://m3.material.io/components/buttons/guidelines#cb583641-335d-4a48-8407-899bc795e0f2)
 :::
 
+## Disabled state
+You can set disabled state to button, by adding `disabled` prop
+
+<ExampleWrapper>
+    <MButton text="Filled" disabled/>
+    <MButton text="Tonal" variant="tonal" disabled/>
+    <MButton text="Outlined" variant="outlined" disabled/>
+    <MButton text="Text" variant="text" disabled/>
+</ExampleWrapper>
+
+::: details code
+```vue
+<m-button text="Filled" disabled/>
+<m-button text="Tonal" variant="tonal" disabled/>
+<m-button text="Outlined" variant="outlined" disabled/>
+<m-button text="Text" variant="text" disabled/>
+```
+:::
+
 ## Custom color
 You can use your own color tokens or another default m3 tokens (like tertiary or error color) with ``color`` prop.
 

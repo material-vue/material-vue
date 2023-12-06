@@ -1,13 +1,13 @@
 <template>
   <div
-    class="inline-flex justify-center items-center gap-2 py-2.5 relative overflow-hidden rounded-full"
+    class="inline-flex select-none justify-center items-center gap-2 py-2.5 relative overflow-hidden rounded-full"
     :class="[
       paddingX,
       { 'border border-[--md-sys-color-outline]': variant === 'outlined' },
     ]"
     :style="[$c(textColor), $c(backgroundColor)]"
   >
-    <MStateLayer :background="$c(stateBackground)" />
+    <MStateLayer :background="$c(stateBackground)" :disabled="disabled" />
     <span
       v-if="prependIcon"
       class="material-symbols-rounded text-[18px]"
@@ -43,6 +43,10 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
   variant: {
     type: String,
     default: 'filled',
@@ -73,6 +77,9 @@ const paddingX = computed(() => {
 })
 
 const textColor = computed(() => {
+  if (props.disabled) {
+    return 'color: var(--md-sys-color-on-surface); opacity: 0.38'
+  }
   switch (props.variant) {
     case 'filled':
       return 'color: var(--md-sys-color-on-primary)'
@@ -85,6 +92,9 @@ const textColor = computed(() => {
   }
 })
 const backgroundColor = computed(() => {
+  if (props.disabled) {
+    return 'background-color: transparent'
+  }
   switch (props.variant) {
     case 'filled':
       return 'background-color: var(--md-sys-color-primary)'
@@ -96,17 +106,24 @@ const backgroundColor = computed(() => {
       return 'background-color: transparent'
   }
 })
-//fixme: not equal to textColor?
+
 const stateBackground = computed(() => {
+  if (props.disabled) {
+    if (['filled', 'tonal', 'elevated'].includes(props.variant)) {
+      return 'background-color: var(--md-sys-color-on-surface); opacity: 0.12 !important'
+    } else {
+      return 'background-color: transparent'
+    }
+  }
   switch (props.variant) {
     case 'filled':
-      return 'var(--md-sys-color-on-primary)'
+      return 'background: var(--md-sys-color-on-primary)'
     case 'outlined':
-      return 'var(--md-sys-color-primary)'
+      return 'background: var(--md-sys-color-primary)'
     case 'tonal':
-      return 'var(--md-sys-color-on-secondary-container)'
+      return 'background: var(--md-sys-color-on-secondary-container)'
     case 'text':
-      return 'var(--md-sys-color-primary)'
+      return 'background: var(--md-sys-color-primary)'
   }
 })
 </script>
