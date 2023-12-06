@@ -1,6 +1,6 @@
 <template>
   <div
-    class="inline-flex items-center gap-2 py-2.5 relative overflow-hidden rounded-full"
+    class="inline-flex justify-center items-center gap-2 py-2.5 relative overflow-hidden rounded-full"
     :class="[
       paddingX,
       { 'border border-[--md-sys-color-outline]': variant === 'outlined' },
