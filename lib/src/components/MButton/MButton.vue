@@ -2,13 +2,12 @@
   <div
     class="inline-flex items-center gap-2 py-2.5 relative overflow-hidden rounded-full"
     :class="[
-      backgroundColor,
-      textColor,
       paddingX,
       { 'border border-[--md-sys-color-outline]': variant === 'outlined' },
     ]"
+    :style="[$c(textColor), $c(backgroundColor)]"
   >
-    <MStateLayer :background="stateBackground" />
+    <MStateLayer :background="$c(stateBackground)" />
     <span
       v-if="prependIcon"
       class="material-symbols-rounded text-[18px]"
@@ -19,7 +18,11 @@
       class="material-symbols-rounded text-[18px]"
       v-text="icon"
     />
-    <span v-else class="label-large" v-text="text" />
+    <span
+      v-else
+      class="label-large lowercase first-letter:uppercase"
+      v-text="text"
+    />
     <span
       v-if="appendIcon"
       class="material-symbols-rounded text-[18px]"
@@ -32,6 +35,7 @@
 import MStateLayer from '../MStateLayer.vue'
 import { useIconProps } from '../../composables/useIconProps.js'
 import { computed } from 'vue'
+import { useCustomThemeColor } from '../../composables/useCustomThemeColor.js'
 
 const props = defineProps({
   ...useIconProps(),
@@ -46,10 +50,16 @@ const props = defineProps({
       return ['filled', 'outlined', 'tonal', 'text'].includes(value)
     },
   },
+  color: {
+    type: String,
+    default: null,
+  },
 })
 
+const $c = useCustomThemeColor(props.color)
+
 const paddingX = computed(() => {
-  if (props.variant === 'text')
+  if (props.variant === 'text' && props.icon == null)
     return (
       'px-3 ' +
       (props.prependIcon ? 'pr-4 ' : '') +
@@ -65,25 +75,25 @@ const paddingX = computed(() => {
 const textColor = computed(() => {
   switch (props.variant) {
     case 'filled':
-      return 'text-[--md-sys-color-on-primary]'
+      return 'color: var(--md-sys-color-on-primary)'
     case 'outlined':
-      return 'text-[--md-sys-color-primary]'
+      return 'color: var(--md-sys-color-primary)'
     case 'tonal':
-      return 'text-[--md-sys-color-on-secondary-container]'
+      return 'color: var(--md-sys-color-on-secondary-container)'
     case 'text':
-      return 'text-[--md-sys-color-primary]'
+      return 'color: var(--md-sys-color-primary)'
   }
 })
 const backgroundColor = computed(() => {
   switch (props.variant) {
     case 'filled':
-      return 'bg-[--md-sys-color-primary]'
+      return 'background-color: var(--md-sys-color-primary)'
     case 'outlined':
-      return 'bg-transparent'
+      return 'background-color: transparent'
     case 'tonal':
-      return 'bg-[--md-sys-color-secondary-container]'
+      return 'background-color: var(--md-sys-color-secondary-container)'
     case 'text':
-      return 'bg-transparent'
+      return 'background-color: transparent'
   }
 })
 //fixme: not equal to textColor?
