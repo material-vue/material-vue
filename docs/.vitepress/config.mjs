@@ -25,13 +25,6 @@ export default defineConfig({
           { text: 'Buttons', link: '/components/buttons'}
         ]
       },
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
     ],
 
     socialLinks: [
