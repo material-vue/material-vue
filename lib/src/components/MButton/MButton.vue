@@ -1,9 +1,14 @@
 <template>
-  <div
-    class="inline-flex select-none justify-center items-center gap-2 py-2.5 relative overflow-hidden rounded-full"
+  <component
+    :is="tag"
+    :href="link"
+    class="inline-flex !no-underline select-none justify-center items-center gap-2 py-2.5 relative overflow-hidden rounded-full"
     :class="[
       paddingX,
-      { 'border border-[--md-sys-color-outline]': variant === 'outlined' },
+      {
+        'border-solid !border-[--md-sys-color-outline]': variant === 'outlined',
+        'pointer-events-none': disabled,
+      },
     ]"
     :style="[$c(textColor), $c(backgroundColor)]"
   >
@@ -28,13 +33,13 @@
       class="material-symbols-rounded text-[18px]"
       v-text="appendIcon"
     />
-  </div>
+  </component>
 </template>
 
 <script setup>
 import MStateLayer from '../MStateLayer.vue'
 import { useIconProps } from '../../composables/useIconProps.js'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useCustomThemeColor } from '../../composables/useCustomThemeColor.js'
 
 const props = defineProps({
@@ -42,6 +47,10 @@ const props = defineProps({
   text: {
     type: String,
     required: true,
+  },
+  link: {
+    type: String,
+    default: null,
   },
   disabled: {
     type: Boolean,
@@ -59,6 +68,8 @@ const props = defineProps({
     default: null,
   },
 })
+
+const tag = ref(props.link ? 'a' : 'button')
 
 const $c = useCustomThemeColor(props.color)
 
