@@ -7,6 +7,8 @@ import '../style/custom-tokens.css'
 
 
 # Buttons 
+<m-button style="float: right; transform: translateY(-100%)" target="_blank" rel="noopener noreferrer" link="https://m3.material.io/components/buttons/overview" variant="text" prepend-icon="open_in_new" text="material docs"/>
+
 <MIOList :items="['Can contain an optional leading icon', 'Containers have fully rounded corners and are wide enough to fit label text', 'Keep labels concise and in sentence-case']"/>
 
 [//]: # (## Usage)
