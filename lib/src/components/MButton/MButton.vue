@@ -40,7 +40,7 @@
 <script setup>
 import MStateLayer from '../MStateLayer.vue'
 import { useIconProps } from '../../composables/useIconProps.js'
-import { computed, ref } from 'vue'
+import { computed, h, ref } from 'vue'
 import { useCustomThemeColor } from '../../composables/useCustomThemeColor.js'
 
 const props = defineProps({
@@ -70,7 +70,9 @@ const props = defineProps({
   },
 })
 
-const tag = ref(props.link ? 'a' : 'button')
+const tag = computed(() => {
+  return h(props.link ? 'a' : 'button', {})
+})
 
 const $c = useCustomThemeColor(props.color)
 
