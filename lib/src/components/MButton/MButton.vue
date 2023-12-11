@@ -6,7 +6,8 @@
     :class="[
       paddingX,
       {
-        'border-solid !border-[--md-sys-color-outline]': variant === 'outlined',
+        'border-solid border !border-[--md-sys-color-outline]':
+          variant === 'outlined',
         'pointer-events-none': disabled,
       },
     ]"
