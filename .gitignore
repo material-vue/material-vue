@@ -22,3 +22,5 @@ lib/.vscode/*
 *.njsproj
 *.sln
 *.sw?
+
+docs/.vitepress/cache
