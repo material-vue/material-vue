@@ -1,5 +1,5 @@
 <template>
-  <div class="example-wrapper" :class="{'dark': darkMode && chosenMode, 'light': !darkMode && chosenMode}">
+  <div class="example-wrapper" :class="{'dark': darkMode && chosenMode, 'light': !darkMode && chosenMode}" :style="{flexDirection: vertical ? 'column' : 'row'}">
     <div class="icon" @click="() => {
       darkMode = !darkMode
       chosenMode = true
@@ -24,6 +24,10 @@ defineProps({
   description: {
     type: String,
     default: null
+  },
+  vertical: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -43,7 +47,8 @@ onMounted(() => {
 
   margin: 12px 0;
 
-  height: 150px;
+  min-height: 150px;
+  padding: 12px;
   border-radius: 16px;
   border: solid var(--md-sys-color-outline);
   background: var(--md-sys-color-background);
