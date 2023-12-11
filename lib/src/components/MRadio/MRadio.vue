@@ -15,23 +15,36 @@
 </template>
 
 <script setup>
-import { computed, ref, watch } from 'vue'
+import { computed, inject, ref, watch } from 'vue'
 import MStateLayer from '../MStateLayer.vue'
+import { radioGroupModelValueSymbol } from '../utils/keys.js'
 
 const props = defineProps({
-  checked: {
+  modelValue: {
     type: Boolean,
     default: false,
   },
+  value: {
+    required: true,
+  },
 })
 
-const emits = defineEmits(['update:checked'])
+//TODO: symbol
+let group = inject(radioGroupModelValueSymbol, undefined)
 
-const actualState = ref(props.checked)
+const emits = defineEmits(['update:modelValue'])
 
-watch(props.checked, () => {
-  actualState.value = props.checked
-})
+const actualState = ref(group ? group === props.value : props.modelValue)
+
+if (group === undefined) {
+  watch(props.modelValue, () => {
+    actualState.value = props.modelValue
+  })
+} else {
+  watch(group, () => {
+    actualState.value = group.value === props.value
+  })
+}
 
 const stateBackground = computed(() => {
   return actualState.value
@@ -52,7 +65,13 @@ const contentColor = computed(() => {
 })
 
 function click() {
-  actualState.value = true
+  if (group === undefined) {
+    actualState.value = !actualState.value
+    emits('update:modelValue', actualState.value)
+  } else {
+    actualState.value = true
+    group.value = props.value
+  }
 }
 </script>
 
