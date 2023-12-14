@@ -11,9 +11,9 @@
         'pointer-events-none': disabled,
       },
     ]"
-    :style="[$c(textColor), $c(backgroundColor)]"
+    :style="[textColor, backgroundColor]"
   >
-    <MStateLayer :background="$c(stateBackground)" :disabled="disabled" />
+    <MStateLayer :background="stateBackground" :disabled="disabled" />
     <span
       v-if="prependIcon"
       class="material-symbols-rounded text-[18px]"
@@ -40,8 +40,7 @@
 <script setup>
 import MStateLayer from '../MStateLayer.vue'
 import { useIconProps } from '../../composables/useIconProps.js'
-import { computed, h, ref } from 'vue'
-import { useCustomThemeColor } from '../../composables/useCustomThemeColor.js'
+import { computed, h } from 'vue'
 
 const props = defineProps({
   ...useIconProps(),
@@ -64,17 +63,11 @@ const props = defineProps({
       return ['filled', 'outlined', 'tonal', 'text'].includes(value)
     },
   },
-  color: {
-    type: String,
-    default: null,
-  },
 })
 
 const tag = computed(() => {
   return h(props.link ? 'a' : 'button', {})
 })
-
-const $c = useCustomThemeColor(props.color)
 
 const paddingX = computed(() => {
   if (props.variant === 'text' && props.icon == null)
