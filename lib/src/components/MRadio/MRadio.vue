@@ -17,7 +17,7 @@
 <script setup>
 import { computed, inject, ref, watch } from 'vue'
 import MStateLayer from '../MStateLayer.vue'
-import { radioGroupModelValueSymbol } from '../utils/keys.js'
+import { radioGroupModelValueSymbol } from '../../utils/keys.js'
 
 const props = defineProps({
   modelValue: {

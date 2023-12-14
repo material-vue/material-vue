@@ -6,7 +6,7 @@
 
 <script setup>
 import { computed, provide, ref, watch } from 'vue'
-import { radioGroupModelValueSymbol } from '../utils/keys.js'
+import { radioGroupModelValueSymbol } from '../../utils/keys.js'
 
 const props = defineProps({
   modelValue: {
