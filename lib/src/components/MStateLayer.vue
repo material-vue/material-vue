@@ -20,7 +20,7 @@
 
 <script setup>
 import '../styles/style.css'
-import { EASING } from './utils/motion.js'
+import { EASING } from '../utils/motion.js'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 const props = defineProps({
