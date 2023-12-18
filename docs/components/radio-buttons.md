@@ -6,7 +6,7 @@ import MIOList from '../common/MIOList.vue'
 import ExampleWrapper from '../common/ExampleWrapper.vue' 
 import {ref} from "vue"; 
 
-const r = ref(null)
+const radioValue = ref(null)
 </script>
 
 # Radio button
@@ -17,16 +17,28 @@ const r = ref(null)
 ## Inline usage
 
 <ExampleWrapper vertical>
-    <m-radio-group v-model="r">
+    <m-radio-group v-model="radioValue">
         <m-radio value="1"/>
-        <m-radio value="two"/>
+        <m-radio value="2"/>
     </m-radio-group>
-    {{r}}
-    <m-button variant="tonal" text="reset" @click="r = null"/>
+    {{radioValue || "(none selected)"}}
+    <m-button variant="tonal" text="reset" @click="radioValue = null"/>
 </ExampleWrapper>
 
 ::: details code
+vue template
 ```vue
-<m-radio/>
+<m-radio-group v-model="radioValue">
+  <m-radio value="1"/>
+  <m-radio value="2"/>
+</m-radio-group>
+{{ radioValue || "(none selected)" }}
+<m-button variant="tonal" text="reset" @click="radioValue = null"/>
+```
+script setup
+```js
+import {ref} from "vue"; 
+
+const radioValue = ref(null)
 ```
 :::
