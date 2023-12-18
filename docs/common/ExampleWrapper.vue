@@ -24,7 +24,6 @@ const chosenMode = ref(false)
 const {isDark} = useData()
 
 watch(isDark, () => {
-  console.log(isDark)
   if (!chosenMode.value) darkMode.value = isDark.value
 }, {immediate: true})
 
