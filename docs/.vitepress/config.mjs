@@ -26,6 +26,12 @@ export default defineConfig({
           { text: 'Radio', link: '/components/radio-buttons'}
         ]
       },
+      {
+        text: 'Features',
+        items: [
+          { text: 'Color', link: '/features/theme'},
+        ]
+      },
     ],
 
     socialLinks: [
