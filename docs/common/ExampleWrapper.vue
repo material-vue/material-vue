@@ -1,5 +1,5 @@
 <template>
-  <div class="example-wrapper" :class="{'dark': darkMode && chosenMode, 'light': !darkMode && chosenMode}" :style="{flexDirection: vertical ? 'column' : 'row'}">
+  <div class="example-wrapper" :class="{'dark': darkMode, 'light': !darkMode}" :style="{flexDirection: vertical ? 'column' : 'row'}">
     <div class="icon" @click="() => {
       darkMode = !darkMode
       chosenMode = true
@@ -15,10 +15,18 @@
 <script setup>
 import DarkModeIcon from "./DarkModeIcon.vue";
 import LightModeIcon from "./LightModeIcon.vue";
-import {onMounted, ref} from "vue";
+import {ref, watch} from "vue";
+import { useData } from 'vitepress'
 
 const darkMode = ref(false)
 const chosenMode = ref(false)
+
+const {isDark} = useData()
+
+watch(isDark, () => {
+  console.log(isDark)
+  if (!chosenMode.value) darkMode.value = isDark.value
+}, {immediate: true})
 
 defineProps({
   description: {
@@ -30,10 +38,6 @@ defineProps({
     default: false
   }
 })
-
-onMounted(() => {
-  darkMode.value = document.documentElement.classList.contains('dark')
-})
 </script>
 
 <style>
@@ -41,6 +45,7 @@ onMounted(() => {
   position: relative;
 
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 8px;
@@ -52,6 +57,15 @@ onMounted(() => {
   border-radius: 16px;
   border: solid var(--md-sys-color-outline);
   background: var(--md-sys-color-background);
+}
+
+@media (max-width: 640px) {
+  .example-wrapper {
+    flex-direction: column !important;
+  }
+  .icon {
+    opacity: 1 !important;
+  }
 }
 
 .dotted {
@@ -68,6 +82,7 @@ onMounted(() => {
   cursor: pointer;
 
   position: absolute;
+  z-index: 10;
   top: 8px;
   right: 8px;
   opacity: 0;
