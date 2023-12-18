@@ -23,9 +23,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^10.7.0",
     "vue": "^3.3.8"
   },
   "devDependencies": {
+    "@material/material-color-utilities": "^0.2.7",
     "@vitejs/plugin-vue": "^4.5.0",
     "@material/material-color-utilities": "^0.2.7",
     "autoprefixer": "^10.4.16",
