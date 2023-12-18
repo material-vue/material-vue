@@ -17,6 +17,8 @@ const dialog = ref(null)
 [//]: # (## Usage)
 
 ## Basic usage
+updateYou can use dialog with `m-dialog`. The component ref has `open()` and `close()`
+exposed functions, use it to show/hide modal dialog.
 
 <ExampleWrapper>
     <m-button text="Open dialog" @click="dialog.open()"/>
@@ -29,8 +31,20 @@ const dialog = ref(null)
 </ExampleWrapper>
 
 ::: details code
+vue template
 ```vue
-<m-button text="Open dialog" @click="dialog1.open()"/>
-<m-dialog ref="dialog" title="Title" text="Some lorem ipsum dialog text"/>
+<m-button text="Open dialog" @click="dialog.open()"/>
+<m-dialog ref="dialog" title="Title" text="Some lorem ipsum dialog text">
+  <template #actions>
+    <m-button variant="text" text="cancel" @click="dialog.close()"/>
+    <m-button text="action 2"/>
+  </template>
+</m-dialog>
+```
+script setup
+```js
+import {ref} from "vue";
+
+const dialog = ref(null)
 ```
 :::
