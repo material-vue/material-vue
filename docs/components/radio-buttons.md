@@ -14,14 +14,15 @@ const radioValue = ref(null)
 
 <MIOList :items="['Use radio buttons (not switches) when only one item can be selected from a list', 'Label should be scannable', 'Selected items are more prominent than unselected items']"/>
 
-## Inline usage
+## Basic usage
+
 
 <ExampleWrapper vertical>
     <m-radio-group v-model="radioValue">
-        <m-radio value="1"/>
-        <m-radio value="2"/>
+        <m-radio value="1" text="option 1"/>
+        <m-radio value="2" text="option 2"/>
     </m-radio-group>
-    {{radioValue || "(none selected)"}}
+    <p style="color: var(--md-sys-color-on-background); margin-top: -4px" v-text="radioValue || 'none selected'"/>
     <m-button variant="tonal" text="reset" @click="radioValue = null"/>
 </ExampleWrapper>
 
@@ -29,8 +30,8 @@ const radioValue = ref(null)
 vue template
 ```vue
 <m-radio-group v-model="radioValue">
-  <m-radio value="1"/>
-  <m-radio value="2"/>
+  <m-radio value="1" text="option 1"/>
+  <m-radio value="2" text="option 2"/>
 </m-radio-group>
 {{ radioValue || "(none selected)" }}
 <m-button variant="tonal" text="reset" @click="radioValue = null"/>
