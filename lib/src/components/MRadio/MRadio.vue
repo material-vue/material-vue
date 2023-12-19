@@ -1,15 +1,22 @@
 <template>
-  <div class="w-12 h-12 relative">
-    <div class="absolute inset-1 rounded-full overflow-hidden" @click="click">
-      <MStateLayer
-        :background="stateBackground"
-        :ripple-background="rippleBackground"
+  <div class="flex gap-0.5 cursor-pointer items-center" @click="click">
+    <div class="w-12 h-12 relative">
+      <div class="absolute inset-1 rounded-full overflow-hidden">
+        <MStateLayer
+          :background="stateBackground"
+          :ripple-background="rippleBackground"
+        />
+      </div>
+      <span
+        class="material-symbols-rounded m-3 z-10 pointer-events-none absolute w-6 h-6"
+        :class="contentColor"
+        v-text="actualState ? 'radio_button_checked' : 'radio_button_unchecked'"
       />
     </div>
-    <span
-      class="material-symbols-rounded m-3 z-10 pointer-events-none absolute w-6 h-6"
-      :class="contentColor"
-      v-text="actualState ? 'radio_button_checked' : 'radio_button_unchecked'"
+    <p
+      v-if="text"
+      class="body-large lowercase first-letter:uppercase text-[--md-sys-color-on-surface]"
+      v-text="text"
     />
   </div>
 </template>
@@ -26,6 +33,10 @@ const props = defineProps({
   },
   value: {
     required: true,
+  },
+  text: {
+    type: String,
+    default: null,
   },
 })
 

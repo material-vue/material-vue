@@ -37,3 +37,9 @@ const model = computed({
 
 provide(radioGroupModelValueSymbol, model)
 </script>
+
+<script>
+export default {
+  name: 'MRadioGroup',
+}
+</script>
