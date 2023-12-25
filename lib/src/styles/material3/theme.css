@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Geologica&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
 @import url(tokens.css);
 @import url(colors.module.css);
 @import url(typography.module.css);
 @import url(theme.light.css);
 @import url(theme.dark.css);
+
+.filled-icon {
+    font-variation-settings: 'FILL' 1;
+}

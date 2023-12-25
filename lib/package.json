@@ -1,6 +1,11 @@
 {
   "name": "@korpusovmax/material-vue",
-  "version": "1.0.36",
+  "author": "Korpusov Maxim <korpusovmax@gmail.com> (https://github.com/korpusovmax)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/korpusovmax/material-vue.git"
+  },
+  "version": "1.0.47",
   "files": [
     "dist/"
   ],
@@ -29,7 +34,6 @@
   "devDependencies": {
     "@material/material-color-utilities": "^0.2.7",
     "@vitejs/plugin-vue": "^4.5.0",
-    "@material/material-color-utilities": "^0.2.7",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.31",
     "prettier": "3.1.0",

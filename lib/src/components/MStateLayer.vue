@@ -54,7 +54,7 @@ const rippleBg = computed(() => {
 })
 
 const PRESS_GROW_MS = 500
-const MINIMUM_PRESS_MS = 300
+const MINIMUM_PRESS_MS = 225
 const INITIAL_ORIGIN_SCALE = 0.2
 const PADDING = 10
 const SOFT_EDGE_MINIMUM_SIZE = 75
@@ -128,8 +128,7 @@ function animEnd() {
       opacity: [0.2, 0],
     },
     {
-      // timing options
-      duration: 270,
+      duration: 700,
       fill: ANIMATION_FILL,
       easing: EASING.STANDARD,
     }
