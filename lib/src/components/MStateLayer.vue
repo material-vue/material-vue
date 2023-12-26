@@ -56,7 +56,7 @@ const rippleBg = computed(() => {
 const PRESS_GROW_MS = 500
 const MINIMUM_PRESS_MS = 225
 const INITIAL_ORIGIN_SCALE = 0.2
-const PADDING = 10
+const PADDING = 0
 const SOFT_EDGE_MINIMUM_SIZE = 75
 const SOFT_EDGE_CONTAINER_RATIO = 0.35
 const ANIMATION_FILL = 'forwards'
@@ -128,9 +128,9 @@ function animEnd() {
       opacity: [0.2, 0],
     },
     {
-      duration: 700,
+      duration: 350,
       fill: ANIMATION_FILL,
-      easing: EASING.STANDARD,
+      easing: EASING.STANDARD_ACCELERATE,
     }
   )
 }
@@ -141,6 +141,7 @@ let initialSize = null
 onMounted(() => {
   stateEl.value.addEventListener('mousedown', handleTouchStart)
   stateEl.value.addEventListener('mouseup', handleTouchEnd)
+  stateEl.value.addEventListener('mouseleave', handleTouchEnd)
 
   const { height, width } = stateEl.value.getBoundingClientRect()
   const maxDim = Math.max(height, width)
@@ -161,6 +162,7 @@ onUnmounted(() => {
   if (stateEl.value) {
     stateEl.value.removeEventListener('mousedown', handleTouchStart)
     stateEl.value.removeEventListener('mouseup', handleTouchEnd)
+    stateEl.value.removeEventListener('mouseleave', handleTouchEnd)
   }
 })
 </script>
