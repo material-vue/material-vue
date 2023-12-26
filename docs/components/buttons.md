@@ -6,7 +6,7 @@ import ExampleWrapper from '../common/ExampleWrapper.vue'
 
 
 # Buttons 
-<m-button style="float: right; transform: translateY(-100%)" target="_blank" rel="noopener noreferrer" link="https://m3.material.io/components/buttons/overview" variant="text" prepend-icon="open_in_new" text="material docs"/>
+<m-button style="float: right; transform: translateY(-100%)" target="_blank" rel="noopener noreferrer" href="https://m3.material.io/components/buttons/overview" variant="text" prepend-icon="open_in_new" text="material docs"/>
 
 <MIOList :items="['Can contain an optional leading icon', 'Containers have fully rounded corners and are wide enough to fit label text', 'Keep labels concise and in sentence-case']"/>
 
@@ -38,7 +38,6 @@ You can use all icons from [Google's material symbols](https://fonts.google.com/
 <ExampleWrapper>
     <MButton text="Go to" append-icon="arrow_forward"/>
     <MButton text="Search" variant="tonal" prepend-icon="search"/>
-    <MButton variant="text" icon="lock"/>
 </ExampleWrapper>
 
 
@@ -46,7 +45,6 @@ You can use all icons from [Google's material symbols](https://fonts.google.com/
 ```vue
 <m-button text="Go to" append-icon="arrow_forward"/>
 <m-button text="Search" variant="tonal" prepend-icon="search"/>
-<m-button variant="text" icon="lock"/>
 ```
 :::
 

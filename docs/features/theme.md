@@ -10,35 +10,11 @@ const vThemeColor = themeColorDirective
 You can use your own color to theme components with `v-theme-color` directive
 
 ::: info
-Now `v-theme-color` working only with hex values
+Now `v-theme-color` is working only with hex values
 :::
 
-[//]: # (## Default colors)
-
-[//]: # ()
-[//]: # (<ExampleWrapper>)
-
-[//]: # (    <MButton text="Tertiary color" color="tertiary"/>)
-
-[//]: # (    <MButton text="Error color" color="error" append-icon="error"/>)
-
-[//]: # (</ExampleWrapper>)
-
-[//]: # ()
-[//]: # (::: details code)
-
-[//]: # (```vue)
-
-[//]: # (<m-button text="Tertiary color" color="tertiary"/>)
-
-[//]: # (<m-button text="Error color" color="error" append-icon="error"/>)
-
-[//]: # (```)
-
-[//]: # (:::)
-
 ## Use custom color
-<ExampleWrapper description="Using of custom color tokens">
+<ExampleWrapper description="Using of custom color tokens" :toggleable="false">
     <m-button text="Pinky" v-theme-color="'#F85284'"/>
     <m-button text="Green!" v-theme-color="'#6AA569'"/>
     <m-button text="Lavanda" v-theme-color="'#7D6FA5'"/>
