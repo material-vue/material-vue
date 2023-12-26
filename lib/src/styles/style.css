@@ -8,5 +8,8 @@
     html {
         -webkit-tap-highlight-color: transparent;
     }
+    .material-symbols-rounded {
+        user-select: none;
+    }
 }
 
