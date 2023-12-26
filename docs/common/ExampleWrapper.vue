@@ -1,6 +1,6 @@
 <template>
   <div class="example-wrapper" :class="{'dark': darkMode, 'light': !darkMode}" :style="{flexDirection: vertical ? 'column' : 'row'}">
-    <div class="icon" @click="() => {
+    <div v-if="toggleable" class="icon" @click="() => {
       darkMode = !darkMode
       chosenMode = true
     }">
@@ -13,18 +13,23 @@
 </template>
 
 <script setup>
-import DarkModeIcon from "./DarkModeIcon.vue";
-import LightModeIcon from "./LightModeIcon.vue";
-import {ref, watch} from "vue";
-import { useData } from 'vitepress'
+import DarkModeIcon from "./DarkModeIcon.vue"
+import LightModeIcon from "./LightModeIcon.vue"
+import {ref, watch} from "vue"
+import {useToggle, useDark} from '@vueuse/core'
+import {useData} from "vitepress"
 
 const darkMode = ref(false)
 const chosenMode = ref(false)
 
 const {isDark} = useData()
+const dark = useDark()
+const toggleDark = useToggle(dark)
 
 watch(isDark, () => {
-  if (!chosenMode.value) darkMode.value = isDark.value
+  darkMode.value = isDark.value
+  console.log()
+  toggleDark(isDark.value)
 }, {immediate: true})
 
 defineProps({
@@ -35,6 +40,10 @@ defineProps({
   vertical: {
     type: Boolean,
     default: false
+  },
+  toggleable: {
+    type: Boolean,
+    default: true
   }
 })
 </script>
@@ -56,6 +65,10 @@ defineProps({
   border-radius: 16px;
   border: solid var(--md-sys-color-outline);
   background: var(--md-sys-color-background);
+}
+
+.example-wrapper > .vp-doc p {
+  margin: unset;
 }
 
 @media (max-width: 640px) {
