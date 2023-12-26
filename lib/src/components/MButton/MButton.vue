@@ -1,7 +1,7 @@
 <template>
   <component
-    :is="tag"
-    :href="link"
+    :is="element"
+    :href="href"
     class="inline-flex !no-underline select-none justify-center items-center gap-2 py-2.5 relative overflow-hidden rounded-full"
     :class="[
       paddingX,
@@ -19,16 +19,7 @@
       class="material-symbols-rounded text-[18px]"
       v-text="prependIcon"
     />
-    <span
-      v-if="icon"
-      class="material-symbols-rounded text-[18px]"
-      v-text="icon"
-    />
-    <span
-      v-else
-      class="label-large lowercase first-letter:uppercase"
-      v-text="text"
-    />
+    <span class="label-large lowercase first-letter:uppercase" v-text="text" />
     <span
       v-if="appendIcon"
       class="material-symbols-rounded text-[18px]"
@@ -48,7 +39,7 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  link: {
+  href: {
     type: String,
     default: null,
   },
@@ -65,8 +56,8 @@ const props = defineProps({
   },
 })
 
-const tag = computed(() => {
-  return h(props.link ? 'a' : 'button', {})
+const element = computed(() => {
+  return h(props.href ? 'a' : 'button', {})
 })
 
 const paddingX = computed(() => {
