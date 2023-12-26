@@ -1,6 +1,9 @@
 # Material Vue
 UI components for each your new project, made according to m3 guidelines.
 
+![npm](https://img.shields.io/npm/dm/%40korpusovmax/material-vue)
+
+
 ## Installation
 You can install **MaterialVue** from NPM:
 ```shell
