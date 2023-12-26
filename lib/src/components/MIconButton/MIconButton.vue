@@ -1,7 +1,7 @@
 <template>
   <component
-    :is="tag"
-    :href="link"
+    :is="element"
+    :href="href"
     class="inline-flex !no-underline select-none justify-center items-center gap-2 h-10 w-10 relative overflow-hidden rounded-full"
     :class="[
       {
@@ -40,7 +40,7 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  link: {
+  href: {
     type: String,
     default: null,
   },
@@ -60,8 +60,8 @@ const props = defineProps({
 const active = ref()
 useLocalModel(props.modelValue, active)
 
-const tag = computed(() => {
-  return h(props.link ? 'a' : 'button', {})
+const element = computed(() => {
+  return h(props.href ? 'a' : 'button', {})
 })
 
 const iconColor = computed(() => {
