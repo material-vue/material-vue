@@ -15,11 +15,11 @@ hero:
       link: /api-examples
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Dark mode
+    details: Material Vue provide dark theme realization out of the box
+  - title: According to guidelines
+    details: All components completely based on Material 3 design system
+  - title: Not only components
+    details: Material Vue has own directives, animations, utils to create fully customizable web apps
 ---
 
