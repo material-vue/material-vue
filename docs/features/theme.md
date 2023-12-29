@@ -33,8 +33,14 @@ Now `v-theme-color` is working only with hex values
 By default **Material Vue** uses Geologica font face.
 
 ### Custom font
-To change the font you can simply use css var
+To change the font you can simply use `--md-sys-font-family-name` CSS var
 
+<ExampleWrapper description="Using Lucida Console as theme font" styles="--md-sys-font-family-name: 'Lucida Console', Monaco, monospace">
+    <m-button text="Custom font"/>
+</ExampleWrapper>
+
+::: details code
 ```css
---md-sys-font-family-name: 'Roboto', sans-serif;
+--md-sys-font-family-name: "Lucida Console", Monaco, monospace;
 ```
+:::
