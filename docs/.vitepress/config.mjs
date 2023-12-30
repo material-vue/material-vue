@@ -8,7 +8,8 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Components', link: '/components' }
+        // TODO: to /components/overview
+      { text: 'Components', link: '/components/buttons' }
     ],
 
     sidebar: [
@@ -30,7 +31,7 @@ export default defineConfig({
       {
         text: 'Features',
         items: [
-          { text: 'Color', link: '/features/theme'},
+          { text: 'Theming', link: '/features/theme'},
         ]
       },
     ],

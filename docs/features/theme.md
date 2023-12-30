@@ -26,6 +26,8 @@ Now `v-theme-color` is working only with hex values
 ::: details code
 ```vue
 <m-button text="Pinky" v-theme-color="'#F85284'"/>
+<m-button text="Green!" v-theme-color="'#6AA569'"/>
+<m-button text="Lavanda" v-theme-color="'#7D6FA5'"/>
 ```
 :::
 
