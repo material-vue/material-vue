@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "MaterialVue"
+  name: "Material Vue"
   text: "UI components for each your new project"
   tagline: "Made according to m3 guidelines"
   actions:
@@ -19,7 +19,7 @@ features:
     details: Material Vue provide dark theme realization out of the box
   - title: According to guidelines
     details: All components completely based on Material 3 design system
-  - title: Not only components
+  - title: More then components
     details: Material Vue has own directives, animations, utils to create fully customizable web apps
 ---
 

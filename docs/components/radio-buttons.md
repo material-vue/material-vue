@@ -10,7 +10,7 @@ const radioValue = ref(null)
 </script>
 
 # Radio button
-<m-button style="float: right; transform: translateY(-100%)"  target="_blank" rel="noopener noreferrer" href="https://m3.material.io/components/radio-button/overview" variant="text" prepend-icon="open_in_new" text="material docs"/>
+<m-button style="float: right; transform: translateY(-94%)"  target="_blank" rel="noopener noreferrer" href="https://m3.material.io/components/radio-button/overview" variant="text" prepend-icon="open_in_new" text="material docs"/>
 
 <MIOList :items="['Use radio buttons (not switches) when only one item can be selected from a list', 'Label should be scannable', 'Selected items are more prominent than unselected items']"/>
 
@@ -20,10 +20,10 @@ const radioValue = ref(null)
 <ExampleWrapper vertical>
     <m-radio-group v-model="radioValue">
         <m-radio value="1" text="option 1"/>
-        <m-radio value="2" text="option 2"/>
+        <m-radio style="margin-top: -12px" value="2" text="option 2"/>
     </m-radio-group>
-    <p style="color: var(--md-sys-color-on-background); margin-top: -4px" v-text="radioValue || 'none selected'"/>
-    <m-button variant="tonal" text="reset" @click="radioValue = null"/>
+    <p style="color: var(--md-sys-color-on-background); margin-top: -8px" v-text="radioValue || 'none selected'"/>
+    <m-button style="margin-top: -16px" variant="tonal" text="reset" @click="radioValue = null"/>
 </ExampleWrapper>
 
 ::: details code
