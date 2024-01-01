@@ -1,21 +1,26 @@
 <template>
-  <div class="flex gap-0.5 cursor-pointer items-center" @click="click">
-    <div class="w-12 h-12 relative">
-      <div class="absolute inset-1 rounded-full overflow-hidden">
+  <div
+    class="mv-flex mv-gap-0.5 mv-cursor-pointer mv-items-center"
+    @click.stop="click"
+  >
+    <div class="mv-w-12 mv-h-12 mv-relative">
+      <div class="mv-absolute mv-inset-1 mv-rounded-full mv-overflow-hidden">
         <MStateLayer
+          classes="mv-rounded-full"
           :background="stateBackground"
           :ripple-background="rippleBackground"
+          @click="click"
         />
       </div>
       <span
-        class="material-symbols-rounded m-3 z-10 pointer-events-none absolute w-6 h-6"
+        class="material-symbols-rounded mv-m-3 mv-z-10 mv-pointer-events-none mv-absolute mv-w-6 mv-h-6"
         :class="contentColor"
         v-text="actualState ? 'radio_button_checked' : 'radio_button_unchecked'"
       />
     </div>
     <p
       v-if="text"
-      class="body-large lowercase first-letter:uppercase text-[--md-sys-color-on-surface]"
+      class="body-large mv-lowercase first-letter:mv-uppercase mv-text-[--md-sys-color-on-surface]"
       v-text="text"
     />
   </div>
@@ -40,10 +45,9 @@ const props = defineProps({
   },
 })
 
-//TODO: symbol
 let group = inject(radioGroupModelValueSymbol, undefined)
 
-const emits = defineEmits(['update:modelValue'])
+const emits = defineEmits(['update:modelValue', 'click'])
 
 const actualState = ref(group ? group === props.value : props.modelValue)
 
@@ -71,11 +75,12 @@ const rippleBackground = computed(() => {
 
 const contentColor = computed(() => {
   return actualState.value
-    ? 'text-[--md-sys-color-primary]'
-    : 'text-[--md-sys-color-on-surface]'
+    ? 'mv-text-[--md-sys-color-primary]'
+    : 'mv-text-[--md-sys-color-on-surface]'
 })
 
 function click() {
+  emits('click')
   if (group === undefined) {
     actualState.value = !actualState.value
     emits('update:modelValue', actualState.value)

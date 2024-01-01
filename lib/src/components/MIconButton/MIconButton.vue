@@ -2,21 +2,31 @@
   <component
     :is="element"
     :href="href"
-    class="inline-flex !no-underline select-none justify-center items-center gap-2 h-10 w-10 relative overflow-hidden rounded-full"
+    class="mv-inline-flex !mv-no-underline mv-select-none mv-justify-center mv-items-center mv-gap-2 mv-h-10 mv-w-10 mv-relative mv-overflow-hidden mv-rounded-full"
     :class="[
       {
-        'border-solid border !border-[--md-sys-color-outline]':
+        'mv-border-solid mv-border !mv-border-[--md-sys-color-outline]':
           variant === 'outlined' && (!toggleable || (toggleable && !active)),
-        'pointer-events-none': disabled,
+        'mv-pointer-events-none': disabled,
       },
     ]"
     :style="[iconColor, backgroundColor]"
-    @click="active = !active"
   >
-    <MStateLayer :background="stateBackground" :disabled="disabled" />
+    <MStateLayer
+      :background="stateBackground"
+      :disabled="disabled"
+      classes="mv-rounded-full"
+      @click="
+        () => {
+          active = !active
+          $emit('update:modelValue', active)
+          $emit('click')
+        }
+      "
+    />
     <span
       :class="{ 'filled-icon': toggleable && active }"
-      class="material-symbols-rounded text-[24px]"
+      class="material-symbols-rounded mv-text-[24px]"
       v-text="icon"
     />
   </component>
@@ -59,6 +69,8 @@ const props = defineProps({
 
 const active = ref()
 useLocalModel(props.modelValue, active)
+
+const emits = defineEmits(['update:modelValue', 'click'])
 
 const element = computed(() => {
   return h(props.href ? 'a' : 'button', {})

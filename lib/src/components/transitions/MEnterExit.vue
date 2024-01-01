@@ -1,7 +1,7 @@
 <template>
   <div
     ref="grow"
-    class="max-h-0 overflow-hidden"
+    class="mv-max-h-0 mv-overflow-hidden"
     :class="`${show ? enterClass : exitClass}`"
     style="transition-property: max-height, transform, opacity"
     :style="{

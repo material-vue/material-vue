@@ -1,38 +1,42 @@
 <template>
   <transition v-bind="scrimFade">
     <div
-      v-show="show"
-      class="fixed inset-0 opacity-40 bg-[--md-sys-color-scrim] z-[99998]"
+      v-if="show"
+      class="mv-fixed -mv-inset-20 mv-opacity-40 mv-bg-[--md-sys-color-scrim] mv-z-[99998]"
+      :class="{ 'mv-pointer-event-none': !show }"
       @click="close()"
     />
   </transition>
   <MEnterExit
-    class="top-1/2 left-1/2 z-[99999] w-[312px] bg-[--md-sys-color-surface-container-high] rounded-[28px] fixed"
+    class="mv-top-1/2 mv-left-1/2 mv-z-[99999] mv-w-[312px] mv-bg-[--md-sys-color-surface-container-high] mv-rounded-[28px] mv-fixed"
     ref="dialog"
-    enter-class="opacity-100"
-    exit-class="opacity-0 !max-h-2"
+    enter-class="mv-opacity-100"
+    exit-class="mv-opacity-0 !mv-max-h-2"
     :show="show"
   >
-    <div ref="wrapper" class="p-6">
+    <div ref="wrapper" class="mv-p-6">
       <span
         v-if="icon"
-        class="material-symbols-rounded mb-4 block text-center text-[--md-sys-color-secondary] text-[24px]"
+        class="material-symbols-rounded mv-mb-4 mv-block mv-text-center mv-text-[--md-sys-color-secondary] mv-text-[24px]"
         v-text="icon"
       />
       <p
-        class="headline-small text-[--md-sys-color-on-surface]"
-        :class="{ 'text-center': !!icon }"
+        class="headline-small mv-text-[--md-sys-color-on-surface]"
+        :class="{ 'mv-text-center': !!icon }"
         v-text="title"
       />
       <p
-        class="body-medium text-[--md-sys-color-on-surface-variant] mt-4"
+        class="body-medium mv-text-[--md-sys-color-on-surface-variant] mv-mt-4"
         v-text="text"
       />
 
       <slot />
 
       <!--actions-->
-      <div v-if="$slots.actions" class="flex gap-2 pt-6 justify-end">
+      <div
+        v-if="$slots.actions"
+        class="mv-flex mv-gap-2 mv-pt-6 mv-justify-end"
+      >
         <slot name="actions" />
       </div>
     </div>
@@ -41,7 +45,7 @@
 
 <script setup>
 import MEnterExit from '../transitions/MEnterExit.vue'
-import { onMounted, ref } from 'vue'
+import { nextTick, onMounted, ref } from 'vue'
 import { scrimFade } from '../../utils/transitions.js'
 
 const props = defineProps({
