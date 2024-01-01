@@ -2,11 +2,12 @@
 import MButton from '../../lib/src/components/MButton/MButton.vue'
 import MIOList from '../common/MIOList.vue'
 import ExampleWrapper from '../common/ExampleWrapper.vue'
+import ToMD from '../common/ToMD.vue'
 </script>
 
 
 # Buttons 
-<m-button style="float: right; transform: translateY(-94%)" target="_blank" rel="noopener noreferrer" href="https://m3.material.io/components/buttons/overview" variant="text" prepend-icon="open_in_new" text="material docs"/>
+<ToMD href="https://m3.material.io/components/buttons/overview"/>
 
 <MIOList :items="['Can contain an optional leading icon', 'Containers have fully rounded corners and are wide enough to fit label text', 'Keep labels concise and in sentence-case']"/>
 

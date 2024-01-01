@@ -5,12 +5,13 @@ import MButton from '../../lib/src/components/MButton/MButton.vue'
 import MIOList from '../common/MIOList.vue'
 import ExampleWrapper from '../common/ExampleWrapper.vue' 
 import {ref} from "vue"; 
+import ToMD from '../common/ToMD.vue'
 
 const radioValue = ref(null)
 </script>
 
 # Radio button
-<m-button style="float: right; transform: translateY(-94%)"  target="_blank" rel="noopener noreferrer" href="https://m3.material.io/components/radio-button/overview" variant="text" prepend-icon="open_in_new" text="material docs"/>
+<ToMD href="https://m3.material.io/components/radio-button/overview"/>
 
 <MIOList :items="['Use radio buttons (not switches) when only one item can be selected from a list', 'Label should be scannable', 'Selected items are more prominent than unselected items']"/>
 
