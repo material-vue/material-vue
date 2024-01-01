@@ -1,13 +1,15 @@
 <template>
   <div
     ref="stateEl"
-    class="absolute top-0 left-0 right-0 bottom-0 cursor-pointer opacity-0 hover:opacity-[8%] focus:opacity-[12%] active:opacity-[12%]"
-    :class="{ 'pointer-events-none': disabled }"
+    class="mv-absolute mv-top-0 mv-left-0 mv-right-0 mv-bottom-0 mv-cursor-pointer mv-opacity-0 sm:hover:mv-opacity-[8%] sm:focus:mv-opacity-[12%] sm:active:mv-opacity-[12%]"
+    :class="[classes, { 'mv-pointer-events-none': disabled }]"
     :style="`${background}`"
+    @click.stop
   />
   <span
+    v-show="rippled"
     ref="rippleEl"
-    class="ripple opacity-0 absolute pointer-events-none"
+    class="ripple mv-opacity-0 mv-absolute mv-pointer-events-none"
     :style="`
       background: radial-gradient(
         closest-side,
@@ -36,7 +38,17 @@ const props = defineProps({
     type: String,
     default: null,
   },
+  rippled: {
+    type: Boolean,
+    default: true,
+  },
+  classes: {
+    type: String,
+    default: null,
+  },
 })
+
+const emits = defineEmits(['click'])
 
 const stateEl = ref(null)
 const rippleEl = ref(null)
@@ -73,6 +85,7 @@ function getEndPoint() {
 let animation = null
 
 function handleTouchStart(event) {
+  shouldEmit.value = true
   showRipple.value = true
   ripplePos.value.x = event.offsetX
   ripplePos.value.y = event.offsetY
@@ -101,6 +114,8 @@ function handleTouchStart(event) {
   )
 }
 async function handleTouchEnd() {
+  if (showRipple.value === false) return
+
   let pressAnimationPlayState = Infinity
   if (typeof animation?.currentTime === 'number') {
     pressAnimationPlayState = animation.currentTime
@@ -120,7 +135,15 @@ async function handleTouchEnd() {
   animEnd()
 }
 
-function animEnd() {
+const shouldEmit = ref(true)
+
+function handleTouchLeave() {
+  if (showRipple.value === false) return
+  shouldEmit.value = false
+  animEnd()
+}
+
+async function animEnd() {
   showRipple.value = false
 
   rippleEl.value.animate(
@@ -133,15 +156,25 @@ function animEnd() {
       easing: EASING.STANDARD_ACCELERATE,
     }
   )
+
+  if (!shouldEmit.value) return
+
+  await new Promise((resolve) => {
+    setTimeout(resolve, 30)
+  })
+
+  emits('click')
+  shouldEmit.value = false
 }
 
 let rippleScale = null
 let initialSize = null
 
 onMounted(() => {
-  stateEl.value.addEventListener('mousedown', handleTouchStart)
-  stateEl.value.addEventListener('mouseup', handleTouchEnd)
-  stateEl.value.addEventListener('mouseleave', handleTouchEnd)
+  stateEl.value.addEventListener('pointerdown', handleTouchStart)
+  stateEl.value.addEventListener('pointerup', handleTouchEnd)
+  stateEl.value.addEventListener('contextmenu', handleTouchLeave)
+  stateEl.value.addEventListener('pointerleave', handleTouchLeave)
 
   const { height, width } = stateEl.value.getBoundingClientRect()
   const maxDim = Math.max(height, width)
@@ -160,15 +193,16 @@ onMounted(() => {
 
 onUnmounted(() => {
   if (stateEl.value) {
-    stateEl.value.removeEventListener('mousedown', handleTouchStart)
-    stateEl.value.removeEventListener('mouseup', handleTouchEnd)
-    stateEl.value.removeEventListener('mouseleave', handleTouchEnd)
+    stateEl.value.removeEventListener('pointerdown', handleTouchStart)
+    stateEl.value.removeEventListener('pointerup', handleTouchEnd)
+    stateEl.value.removeEventListener('contextmenu', handleTouchLeave)
+    stateEl.value.removeEventListener('pointerleave', handleTouchLeave)
   }
 })
 </script>
 
 <script>
 export default {
-  name: 'MVStateLayer',
+  name: 'MStateLayer',
 }
 </script>
