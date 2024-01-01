@@ -5,7 +5,7 @@ UI components for each your new project, made according to m3 guidelines.
 
 
 ## Installation
-You can install **MaterialVue** from NPM:
+You can install **Material Vue** from NPM:
 ```shell
 npm install @korpusovmax/material-vue
 ```
