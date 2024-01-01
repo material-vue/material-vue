@@ -1,15 +1,17 @@
 <template>
-  <div class="example-wrapper" :class="{'dark': darkMode, 'light': !darkMode}" :style="{flexDirection: vertical ? 'column' : 'row'}">
-    <div v-if="toggleable" class="icon" @click="() => {
+  <div>
+    <div v-theme="'#4171b8'" class="example-wrapper" :class="{'dark': darkMode, 'light': !darkMode}" :style="[styles, {flexDirection: vertical ? 'column' : 'row'}]">
+      <div v-if="toggleable" class="icon" @click="() => {
       darkMode = !darkMode
       chosenMode = true
     }">
-      <DarkModeIcon v-if="!darkMode"/>
-      <LightModeIcon v-if="darkMode"/>
+        <DarkModeIcon v-if="!darkMode"/>
+        <LightModeIcon v-if="darkMode"/>
+      </div>
+      <slot/>
     </div>
-    <slot/>
+    <p v-if="description" class="label-medium" style="color: var(--md-sys-color-on-surface-variant); margin-top: -8px" v-text="description"/>
   </div>
-  <p v-if="description" class="label-medium" style="color: var(--md-sys-color-on-surface-variant); margin-top: -8px" v-text="description"/>
 </template>
 
 <script setup>
@@ -18,6 +20,8 @@ import LightModeIcon from "./LightModeIcon.vue"
 import {ref, watch} from "vue"
 import {useToggle, useDark} from '@vueuse/core'
 import {useData} from "vitepress"
+import {themeColorDirective} from "../../lib/src/utils/color";
+const vTheme = themeColorDirective
 
 const darkMode = ref(false)
 const chosenMode = ref(false)
@@ -43,7 +47,11 @@ defineProps({
   },
   toggleable: {
     type: Boolean,
-    default: true
+    default: false
+  },
+  styles: {
+    type: String,
+    default: null
   }
 })
 </script>
