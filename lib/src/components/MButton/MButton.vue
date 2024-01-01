@@ -2,27 +2,34 @@
   <component
     :is="element"
     :href="href"
-    class="inline-flex !no-underline select-none justify-center items-center gap-2 py-2.5 relative overflow-hidden rounded-full"
+    class="mv-inline-flex !mv-no-underline mv-select-none mv-justify-center mv-items-center mv-gap-2 mv-py-2.5 mv-relative mv-overflow-hidden mv-rounded-full"
     :class="[
       paddingX,
       {
-        'border-solid border !border-[--md-sys-color-outline]':
+        'mv-border-solid mv-border !mv-border-[--md-sys-color-outline]':
           variant === 'outlined',
-        'pointer-events-none': disabled,
+        'mv-pointer-events-none': disabled,
       },
     ]"
     :style="[textColor, backgroundColor]"
   >
-    <MStateLayer :background="stateBackground" :disabled="disabled" />
+    <MStateLayer
+      :background="stateBackground"
+      :disabled="disabled"
+      @click="$emit('click')"
+    />
     <span
       v-if="prependIcon"
-      class="material-symbols-rounded text-[18px]"
+      class="material-symbols-rounded mv-text-[18px]"
       v-text="prependIcon"
     />
-    <span class="label-large lowercase first-letter:uppercase" v-text="text" />
+    <span
+      class="label-large mv-lowercase first-letter:mv-uppercase"
+      v-text="text"
+    />
     <span
       v-if="appendIcon"
-      class="material-symbols-rounded text-[18px]"
+      class="material-symbols-rounded mv-text-[18px]"
       v-text="appendIcon"
     />
   </component>
@@ -56,6 +63,8 @@ const props = defineProps({
   },
 })
 
+defineEmits(['click'])
+
 const element = computed(() => {
   return h(props.href ? 'a' : 'button', {})
 })
@@ -63,14 +72,14 @@ const element = computed(() => {
 const paddingX = computed(() => {
   if (props.variant === 'text' && props.icon == null)
     return (
-      'px-3 ' +
-      (props.prependIcon ? 'pr-4 ' : '') +
-      (props.appendIcon ? 'pl-4' : '')
+      'mv-px-3 ' +
+      (props.prependIcon ? 'mv-pr-4 ' : '') +
+      (props.appendIcon ? 'mv-pl-4' : '')
     )
   return (
-    'px-6 ' +
-    (props.prependIcon ? 'pl-4 ' : '') +
-    (props.appendIcon ? 'pr-4' : '')
+    'mv-px-6 ' +
+    (props.prependIcon ? 'mv-pl-4 ' : '') +
+    (props.appendIcon ? 'mv-pr-4' : '')
   )
 })
 
