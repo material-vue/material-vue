@@ -2,7 +2,6 @@
   <div v-theme-color="'#4171b8'" class="main">
     <m-button @click="dialog.open()" text="Open dialog" variant="filled"/>
 
-    <m-dialog ref="dialog" title="Basic dialog title" text="A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.">
     <m-dialog ref="dialog" title="Create new project" text="New project have a private status by default, only you in this workspace will see it">
 
       <template #actions>
