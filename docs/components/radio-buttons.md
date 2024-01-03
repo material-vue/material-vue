@@ -17,25 +17,23 @@ const radioValue = ref(null)
 
 ## Basic usage
 
+`m-radio` component can be used on its own, but we strongly recommend you use radios
+in pair with `m-radio-group`, that creates default radio buttons single choice behavior
 
 <ExampleWrapper vertical>
     <m-radio-group v-model="radioValue">
         <m-radio value="1" text="option 1"/>
         <m-radio style="margin-top: -12px" value="2" text="option 2"/>
     </m-radio-group>
-    <p style="color: var(--md-sys-color-on-background); margin-top: -8px" v-text="radioValue || 'none selected'"/>
-    <m-button style="margin-top: -16px" variant="tonal" text="reset" @click="radioValue = null"/>
 </ExampleWrapper>
 
 ::: details code
 vue template
 ```vue
 <m-radio-group v-model="radioValue">
-  <m-radio value="1" text="option 1"/>
-  <m-radio value="2" text="option 2"/>
+    <m-radio value="1" text="option 1"/>
+    <m-radio value="2" text="option 2"/>
 </m-radio-group>
-{{ radioValue || "(none selected)" }}
-<m-button variant="tonal" text="reset" @click="radioValue = null"/>
 ```
 script setup
 ```js
