@@ -46,6 +46,10 @@ const props = defineProps({
     type: String,
     default: null,
   },
+  padding: {
+    type: Number,
+    default: 10,
+  },
 })
 
 const emits = defineEmits(['click'])
@@ -65,10 +69,9 @@ const rippleBg = computed(() => {
       }`
 })
 
-const PRESS_GROW_MS = 500
+const PRESS_GROW_MS = 450
 const MINIMUM_PRESS_MS = 225
 const INITIAL_ORIGIN_SCALE = 0.2
-const PADDING = 10
 const SOFT_EDGE_MINIMUM_SIZE = 75
 const SOFT_EDGE_CONTAINER_RATIO = 0.35
 const ANIMATION_FILL = 'forwards'
@@ -115,6 +118,7 @@ function handleTouchStart(event) {
 }
 async function handleTouchEnd() {
   if (showRipple.value === false) return
+  showRipple.value = false
 
   let pressAnimationPlayState = Infinity
   if (typeof animation?.currentTime === 'number') {
@@ -173,7 +177,7 @@ let initialSize = null
 onMounted(() => {
   stateEl.value.addEventListener('pointerdown', handleTouchStart)
   stateEl.value.addEventListener('pointerup', handleTouchEnd)
-  stateEl.value.addEventListener('contextmenu', handleTouchLeave)
+  stateEl.value.addEventListener('contextmenu', handleTouchEnd)
   stateEl.value.addEventListener('pointerleave', handleTouchLeave)
 
   const { height, width } = stateEl.value.getBoundingClientRect()
@@ -185,7 +189,7 @@ onMounted(() => {
 
   initialSize = Math.floor(maxDim * INITIAL_ORIGIN_SCALE)
   const hypotenuse = Math.sqrt(width ** 2 + height ** 2)
-  const maxRadius = hypotenuse + PADDING
+  const maxRadius = hypotenuse + props.padding
 
   rippleScale = `${(maxRadius + softEdgeSize) / initialSize}`
   rectWidth.value = `${initialSize}px`
@@ -195,7 +199,7 @@ onUnmounted(() => {
   if (stateEl.value) {
     stateEl.value.removeEventListener('pointerdown', handleTouchStart)
     stateEl.value.removeEventListener('pointerup', handleTouchEnd)
-    stateEl.value.removeEventListener('contextmenu', handleTouchLeave)
+    stateEl.value.removeEventListener('contextmenu', handleTouchEnd)
     stateEl.value.removeEventListener('pointerleave', handleTouchLeave)
   }
 })
