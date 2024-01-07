@@ -2,13 +2,13 @@
   <transition v-bind="scrimFade">
     <div
       v-if="show"
-      class="mv-fixed -mv-inset-20 mv-opacity-40 mv-bg-[--md-sys-color-scrim] mv-z-[99998]"
+      class="mv-fixed -mv-inset-20 mv-opacity-40 mv-bg-[--md-sys-color-scrim] mv-z-[9999988]"
       :class="{ 'mv-pointer-event-none': !show }"
       @click="close()"
     />
   </transition>
   <MEnterExit
-    class="mv-top-1/2 mv-left-1/2 mv-z-[99999] mv-w-[312px] mv-bg-[--md-sys-color-surface-container-high] mv-rounded-[28px] mv-fixed"
+    class="mv-top-1/2 mv-left-1/2 mv-z-[9999999] mv-w-[312px] mv-bg-[--md-sys-color-surface-container-high] mv-rounded-[28px] mv-fixed"
     ref="dialog"
     enter-class="mv-opacity-100"
     exit-class="mv-opacity-0 !mv-max-h-2"
