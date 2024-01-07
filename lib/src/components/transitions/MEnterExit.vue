@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref, useSlots, watch } from 'vue'
 import { EASING } from '../../utils/motion.js'
 
 const props = defineProps({
@@ -53,5 +53,14 @@ onMounted(() => {
     },
     { immediate: true }
   )
+
+  watch(
+    () => slots.default(),
+    () => {
+      grow.value.style.maxHeight = 'unset'
+    }
+  )
 })
+
+const slots = useSlots()
 </script>
