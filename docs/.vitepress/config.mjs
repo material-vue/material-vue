@@ -24,7 +24,9 @@ export default defineConfig({
         text: 'Components',
         items: [
           { text: 'Buttons', link: '/components/buttons'},
+          { text: 'Checkbox', link: '/components/checkbox'},
           { text: 'Dialogs', link: '/components/dialogs'},
+          { text: 'Divider', link: '/components/divider'},
           { text: 'Radio', link: '/components/radio-buttons'}
         ]
       },
@@ -39,5 +41,5 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/korpusovmax/material-vue' }
     ]
-  }
+  },
 })
