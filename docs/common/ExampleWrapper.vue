@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div v-theme="'#4171b8'" class="example-wrapper" :class="{'dark': darkMode, 'light': !darkMode}" :style="[styles, {flexDirection: vertical ? 'column' : 'row'}]">
+  <div class="vp-raw">
+    <div v-theme="'#4171b8'" class="example-wrapper" :class="{'dark': darkMode, 'light': !darkMode}" :style="[styles, {gap: gap+'px', display: flexed ? 'flex' : 'block',flexDirection: vertical ? 'column' : 'row'}]">
       <div v-if="toggleable" class="icon" @click="() => {
       darkMode = !darkMode
       chosenMode = true
@@ -49,6 +49,14 @@ defineProps({
     type: Boolean,
     default: false
   },
+  gap: {
+    type: [Number, String],
+    default: 8
+  },
+  flexed: {
+    type: Boolean,
+    default: true
+  },
   styles: {
     type: String,
     default: null
@@ -56,11 +64,11 @@ defineProps({
 })
 </script>
 
-<style>
+<style scoped>
+
 .example-wrapper {
   position: relative;
 
-  display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
