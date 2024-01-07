@@ -1,15 +1,15 @@
 <template>
   <div
     class="mv-flex mv-gap-0.5 mv-cursor-pointer mv-items-center"
-    @click.stop="click"
+    @click="handleClick"
   >
     <div class="mv-w-12 mv-h-12 mv-relative">
       <div class="mv-absolute mv-inset-1 mv-rounded-full mv-overflow-hidden">
         <MStateLayer
+          ref="stateLayer"
           classes="mv-rounded-full"
           :background="stateBackground"
           :ripple-background="rippleBackground"
-          @click="click"
         />
       </div>
       <span
@@ -45,9 +45,11 @@ const props = defineProps({
   },
 })
 
+const stateLayer = ref(null)
+
 let group = inject(radioGroupModelValueSymbol, undefined)
 
-const emits = defineEmits(['update:modelValue', 'click'])
+const emits = defineEmits(['update:modelValue'])
 
 const actualState = ref(group ? group === props.value : props.modelValue)
 
@@ -79,8 +81,9 @@ const contentColor = computed(() => {
     : 'mv-text-[--md-sys-color-on-surface]'
 })
 
-function click() {
-  emits('click')
+function handleClick(e) {
+  stateLayer.value.animStart({ center: true })
+
   if (group === undefined) {
     actualState.value = !actualState.value
     emits('update:modelValue', actualState.value)

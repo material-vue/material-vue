@@ -1,15 +1,15 @@
 <template>
   <div
     class="mv-flex mv-gap-0.5 mv-cursor-pointer mv-items-center"
-    @click.stop="handleClick"
+    @click="handleClick"
   >
     <div class="mv-w-12 mv-h-12 mv-relative">
       <div class="mv-absolute mv-inset-1 mv-rounded-full mv-overflow-hidden">
         <MStateLayer
+          ref="stateLayer"
           classes="mv-rounded-full"
           :background="stateBackground"
           :ripple-background="rippleBackground"
-          @click="handleClick"
         />
       </div>
       <span
@@ -45,6 +45,8 @@ const props = defineProps({
   },
 })
 
+const stateLayer = ref(null)
+
 const localModal = ref()
 useLocalModel(props.modelValue, localModal)
 
@@ -71,9 +73,11 @@ const stateBackground = computed(() => {
     : 'background: var(--md-sys-color-on-surface)'
 })
 
-const emits = defineEmits(['update:modelValue', 'click'])
+const emits = defineEmits(['update:modelValue'])
 
 function handleClick() {
+  stateLayer.value.animStart({ center: true })
+
   if (typeof localModal.value === 'boolean') {
     localModal.value = !localModal.value
   } else {
@@ -82,7 +86,6 @@ function handleClick() {
     else localModal.value.push(props.value)
   }
   emits('update:modelValue', localModal.value)
-  emits('click')
 }
 </script>
 
