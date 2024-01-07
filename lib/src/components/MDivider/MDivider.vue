@@ -2,10 +2,10 @@
   <hr
     role="separator"
     :aria-orientation="vertical ? 'vertical' : 'horizontal'"
-    class="mv-border-[0.5px] mv-border-[--md-sys-color-outline-variant]"
+    class="mv-border-[0.5px] mv-self-stretch mv-border-[--md-sys-color-outline-variant]"
     :class="{
       'mv-max-w-full mv-block mv-max-h-px': !vertical,
-      'mv-max-w-px mv-max-h-full mv-self-stretch mv-inline-flex': vertical,
+      'mv-max-w-px mv-max-h-full mv-inline-flex': vertical,
       'mv-mx-4': middle && !vertical,
       'mv-ml-4': inset && !vertical,
       'mv-mt-4': inset && vertical,
