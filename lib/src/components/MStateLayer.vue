@@ -1,10 +1,9 @@
 <template>
   <div
     ref="stateEl"
-    class="mv-absolute mv-top-0 mv-left-0 mv-right-0 mv-bottom-0 mv-cursor-pointer mv-opacity-0 sm:hover:mv-opacity-[8%] sm:focus:mv-opacity-[12%] sm:active:mv-opacity-[12%]"
+    class="mv-absolute mv-transition-opacity mv-top-0 mv-left-0 mv-right-0 mv-bottom-0 mv-cursor-pointer mv-opacity-0 sm:hover:mv-opacity-[8%] focus:mv-opacity-[12%] active:mv-opacity-[12%]"
     :class="[classes, { 'mv-pointer-events-none': disabled }]"
     :style="`${background}`"
-    @click.stop
   />
   <span
     v-show="rippled"
@@ -88,13 +87,17 @@ function getEndPoint() {
 let animation = null
 
 function handleTouchStart(event) {
+  animStart(event.offsetX, event.offsetY)
+}
+
+function animStart(x, y) {
   shouldEmit.value = true
   showRipple.value = true
-  ripplePos.value.x = event.offsetX
-  ripplePos.value.y = event.offsetY
+  ripplePos.value.x = x
+  ripplePos.value.y = y
 
   const endPoint = getEndPoint()
-  const startPoint = { x: event.offsetX, y: event.offsetY }
+  const startPoint = { x, y }
 
   animation = rippleEl.value.animate(
     {
@@ -169,6 +172,7 @@ async function animEnd() {
 
   emits('click')
   shouldEmit.value = false
+  animation = null
 }
 
 let rippleScale = null
@@ -203,6 +207,26 @@ onUnmounted(() => {
     stateEl.value.removeEventListener('pointerleave', handleTouchLeave)
   }
 })
+
+// auto end animation that start from exposed function
+function eAnimStart(options) {
+  if (animation !== null) return
+
+  let x = options.x || 0
+  let y = options.y || 0
+
+  if (options.center) {
+    x = stateEl.value.getBoundingClientRect().width / 2
+    y = stateEl.value.getBoundingClientRect().height / 2
+  }
+
+  animStart(x, y)
+  setTimeout(() => {
+    if (showRipple.value !== false) animEnd()
+  }, MINIMUM_PRESS_MS)
+}
+
+defineExpose({ animStart: eAnimStart })
 </script>
 
 <script>
