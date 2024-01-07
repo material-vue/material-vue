@@ -218,6 +218,7 @@
   --md-sys-color-surface-container-lowest-light: #ffffff;
   --md-sys-color-surface-dim-light: #d8dadc;
   --md-sys-color-surface-bright-light: #f8f9fb;
+  --md-sys-shadow-light-2:  0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30);
   /* dark */
   --md-sys-color-primary-dark: #5dd4fc;
   --md-sys-color-on-primary-dark: #003544;
@@ -268,6 +269,7 @@
   --md-sys-color-surface-container-lowest-dark: #0c0f10;
   --md-sys-color-surface-dim-dark: #111415;
   --md-sys-color-surface-bright-dark: #373a3b;
+  --md-sys-shadow-dark-2: 0px 1px 2px 0px rgba(0, 0, 0, 0.30), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
 
   /*font*/
   --md-sys-font-family-name: 'Geologica', sans-serif;
