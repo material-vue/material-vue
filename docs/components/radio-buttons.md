@@ -20,10 +20,10 @@ const radioValue = ref(null)
 `m-radio` component can be used on its own, but we strongly recommend you use radios
 in pair with `m-radio-group`, that creates default radio buttons single choice behavior
 
-<ExampleWrapper vertical>
+<ExampleWrapper vertical gap="0">
     <m-radio-group v-model="radioValue">
         <m-radio value="1" text="option 1"/>
-        <m-radio style="margin-top: -12px" value="2" text="option 2"/>
+        <m-radio value="2" text="option 2"/>
     </m-radio-group>
 </ExampleWrapper>
 
