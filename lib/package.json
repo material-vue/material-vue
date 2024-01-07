@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/korpusovmax/material-vue.git"
   },
-  "version": "1.0.50",
+  "version": "1.0.54",
   "files": [
     "dist/"
   ],
