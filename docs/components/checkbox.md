@@ -21,6 +21,7 @@ Checkboxes may be standalone, pre-checked. Indeterminate state is planned for fu
 <ExampleWrapper vertical gap="0">
     <m-checkbox value="1" text="option 1"/>
     <m-checkbox value="2" text="option 2"/>
+    <m-checkbox value="3" text="option 3"/>
 </ExampleWrapper>
 
 ::: details code
@@ -28,5 +29,6 @@ vue template
 ```vue
 <m-checkbox value="1" text="option 1"/>
 <m-checkbox value="2" text="option 2"/>
+<m-checkbox value="3" text="option 3"/>
 ```
 :::

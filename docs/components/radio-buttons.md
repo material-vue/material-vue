@@ -24,6 +24,7 @@ in pair with `m-radio-group`, that creates default radio buttons single choice b
     <m-radio-group v-model="radioValue">
         <m-radio value="1" text="option 1"/>
         <m-radio value="2" text="option 2"/>
+        <m-radio value="3" text="option 3"/>
     </m-radio-group>
 </ExampleWrapper>
 
@@ -33,6 +34,7 @@ vue template
 <m-radio-group v-model="radioValue">
     <m-radio value="1" text="option 1"/>
     <m-radio value="2" text="option 2"/>
+    <m-radio value="3" text="option 3"/>
 </m-radio-group>
 ```
 script setup
